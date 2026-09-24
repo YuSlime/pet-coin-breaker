@@ -1,0 +1,11 @@
+/* Version 9: Titanic rarity */
+.rarity-Titanic{color:#ff8cff!important;text-shadow:0 0 12px rgba(255,80,220,.8)}
+.pet-model.rarity-Titanic{--pg:#ff71e8;filter:drop-shadow(0 0 18px #ff71e8) drop-shadow(0 0 28px #8a6bff) drop-shadow(0 12px 12px rgba(0,0,0,.35))}
+.pet-card.rarity-card-Titanic{background:radial-gradient(circle at 50% 18%,rgba(255,83,221,.25),rgba(122,87,255,.15) 34%,rgba(18,25,48,.98) 74%);box-shadow:0 0 0 1px rgba(255,117,229,.35),0 0 28px rgba(211,90,255,.16),inset 0 0 32px rgba(145,105,255,.12)}
+.pet-card.titanic-card::after{content:"TITANIC";position:absolute;left:50%;top:7px;transform:translateX(-50%);font-size:9px;font-weight:1000;letter-spacing:.18em;color:#ffd6ff;text-shadow:0 0 10px #ff66e6;pointer-events:none}
+.hatch.rarity-Titanic{--rc:#ff72e8}
+.hatch.rarity-Titanic.show .beam{opacity:.55}
+.hatch.rarity-Titanic::after{content:"";position:absolute;inset:-25%;background:repeating-conic-gradient(from 0deg,rgba(255,80,220,.17) 0 3deg,rgba(133,101,255,.12) 3deg 7deg,transparent 7deg 14deg);opacity:0}
+.hatch.revealed.rarity-Titanic::after{animation:legendRays 2.7s linear infinite;opacity:1}
+.hatch.revealed.rarity-Titanic .rarity-banner{animation:bannerDrop .55s .08s cubic-bezier(.2,1.4,.3,1) forwards}
+.hatch.revealed.rarity-Titanic .hatch-pet .pet-model{animation:legendPetEnter .75s cubic-bezier(.15,1.4,.28,1) both!important}
