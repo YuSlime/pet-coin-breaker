@@ -274,6 +274,10 @@ jobs:
           print("Version 17 patch applied:", page.stat().st_size, "bytes")
           PY
 
+      - name: Apply Version 18 wider pet spacing
+        run: |
+          python3 -c "from pathlib import Path; p=Path('public/index.html'); h=p.read_text(encoding='utf-8'); h=h.replace('</style>', Path('patches/v18.css').read_text(encoding='utf-8')+'\n</style>', 1); p.write_text(h, encoding='utf-8'); Path('public/pages-version.json').write_text('{\"version\":18,\"patch\":\"wider-attack-pet-spacing\"}', encoding='utf-8')"
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
