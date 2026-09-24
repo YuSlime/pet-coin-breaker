@@ -174,7 +174,6 @@
     }else{saveMeta();renderHub()}
   }
   window.v15BossDamage=bossDamage;
-  window.v15BossAttack=()=>bossDamage(teamPower()*1.2+state.clickPower*5);
   window.v15ForceBoss=()=>{if(meta.boss.active)return;meta.boss.ready=true;bossStart()};
   setInterval(()=>{if(meta.boss.active&&!window.__bossArenaRouting)bossDamage(Math.max(1,teamPower()/2))},500);
 
@@ -273,8 +272,7 @@
     if(b.active){
       body=
         '<div class="v15-big">'+fmt(b.hp)+' / '+fmt(b.maxHp)+'</div>'+
-        '<div class="v15-bar"><i style="width:'+pct+'%"></i></div>'+
-        '<button class="v15-btn red" onclick="v15BossAttack()">💥 強攻撃</button>';
+        '<div class="v15-bar"><i style="width:'+pct+'%"></i></div>';
     }else{
       body='<div class="v15-big">'+(b.ready?'READY!':meta.breaksSinceBoss+'/'+BOSS_BREAK_REQUIREMENT)+'</div>';
       if(b.ready){
