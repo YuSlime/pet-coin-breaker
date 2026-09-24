@@ -1,0 +1,36 @@
+/* Version 11: slightly smaller Titanic + correct battle size */
+.pet-card.titanic-card .pet-visual-wrap{
+  height:215px!important;
+  margin-top:12px!important;
+  margin-bottom:8px!important;
+}
+.pet-card.titanic-card .pet-model.titanic{
+  transform:scale(3.0)!important;
+}
+.pet-orb .pet-model.titanic{
+  transform:scale(2.3)!important;
+}
+.multi-hatch-item.titanic-result .mini-pet{
+  height:175px!important;
+}
+.multi-hatch-item.titanic-result .pet-model.titanic{
+  transform:scale(2.2)!important;
+}
+.hatch-pet .pet-model.titanic{
+  transform:scale(8.5)!important;
+}
+@keyframes titanicPetEnterV11{
+  0%{transform:scale(.8) rotate(-16deg);filter:brightness(5) blur(10px)}
+  68%{transform:scale(9.1) rotate(5deg)}
+  100%{transform:scale(8.5) rotate(0)}
+}
+.hatch.revealed.rarity-Titanic .hatch-pet .pet-model.titanic{
+  animation:titanicPetEnterV11 .9s cubic-bezier(.15,1.4,.28,1) both!important;
+}
+@media(max-width:560px){
+  .pet-card.titanic-card .pet-visual-wrap{height:180px!important}
+  .pet-card.titanic-card .pet-model.titanic{transform:scale(2.55)!important}
+  .pet-orb .pet-model.titanic{transform:scale(2.0)!important}
+  .multi-hatch-item.titanic-result .mini-pet{height:150px!important}
+  .multi-hatch-item.titanic-result .pet-model.titanic{transform:scale(1.95)!important}
+}
