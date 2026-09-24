@@ -24,15 +24,18 @@
     try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}
   }
 
+  let lastReady=null;
   function sync(){
     const m=readMeta(),boss=m?.boss||{};
     const ready=!!boss.ready&&!boss.active;
+    if(ready===lastReady)return;
+    lastReady=ready;
     btn.classList.toggle('ready',ready);
     btn.disabled=!ready;
     btn.setAttribute('aria-hidden',ready?'false':'true');
   }
 
   window.v23SyncBossChallenge=sync;
-  setInterval(sync,200);
+  setInterval(sync,500);
   sync();
 })();
