@@ -164,6 +164,22 @@ jobs:
           print("Version 10 patch applied:", page.stat().st_size, "bytes")
           PY
 
+      - name: Apply Version 11 Titanic battle size fix
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("public/index.html")
+          html = page.read_text(encoding="utf-8")
+          css = Path("patches/v11.css").read_text(encoding="utf-8")
+          js = Path("patches/v11.js").read_text(encoding="utf-8")
+          html = html.replace("</style>", css + "\n</style>", 1)
+          html = html.replace("</body>", "<script>\n" + js + "\n</script>\n</body>", 1)
+          page.write_text(html, encoding="utf-8")
+          Path("public/pages-version.json").write_text('{"version":11,"patch":"titanic-size-battle-fix"}', encoding="utf-8")
+          print("Version 11 patch applied:", page.stat().st_size, "bytes")
+          PY
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
