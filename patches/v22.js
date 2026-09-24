@@ -1,15 +1,12 @@
-/* Version 22: boss balance migration */
+/* Version 39: safe boss balance migration — never multiply current boss HP on reload */
 (function(){
   const KEY='petCoinBreakerV15Meta';
   try{
     const meta=JSON.parse(localStorage.getItem(KEY)||'{}');
-    if(meta?.boss?.active && !meta.boss.v22Scaled){
-      meta.boss.hp=Math.round(Number(meta.boss.hp||0)*3);
-      meta.boss.maxHp=Math.round(Number(meta.boss.maxHp||0)*3);
+    if(meta?.boss?.active){
       meta.boss.v22Scaled=true;
+      meta.boss.balanceVersion=Math.max(Number(meta.boss.balanceVersion||0),39);
       localStorage.setItem(KEY,JSON.stringify(meta));
-      try{renderAll();renderHub()}catch(e){}
-      try{toast('👑 Boss Chest強化: HP ×3 / 強攻撃弱体化')}catch(e){}
     }
   }catch(e){}
 })();
