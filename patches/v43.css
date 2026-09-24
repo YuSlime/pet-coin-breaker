@@ -58,7 +58,7 @@
 .hatch.v43-pre-Huge.v43-reveal-impact .rarity-banner{font-size:clamp(64px,11vw,118px)!important;text-shadow:0 0 20px #fff,0 0 50px #ffe36f,0 0 78px #ff76cf,0 10px 0 rgba(0,0,0,.28)!important}
 .hatch.v43-pre-Titanic.v43-reveal-impact .rarity-banner{font-size:clamp(70px,12vw,130px)!important;text-shadow:0 0 22px #fff,0 0 50px #82efff,0 0 82px #ff76e5,0 0 120px #7869ff,0 11px 0 rgba(0,0,0,.32)!important}
 
-.hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card{opacity:0!important;transform:translateY(52px) scale(.7) rotate(-3deg)!important}
+.hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card{opacity:0;transform:translateY(52px) scale(.7) rotate(-3deg)}
 .hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card.v43-stagger-show{animation:v43StaggerCard .62s cubic-bezier(.1,1.3,.22,1) forwards!important}
 .hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card.v39-rarity-Legendary.v43-stagger-show,
 .hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card.huge-result.v43-stagger-show,
