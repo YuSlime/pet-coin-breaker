@@ -340,6 +340,12 @@ jobs:
       - name: Validate Version 43 hatch overhaul
         run: python3 patches/validate_v43.py public/index.html
 
+      - name: Apply Version 44 five-hatch visibility fix
+        run: python3 patches/apply_v44.py
+
+      - name: Validate Version 44 five-hatch visibility
+        run: python3 patches/validate_v44.py public/index.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
