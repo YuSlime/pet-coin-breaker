@@ -38,7 +38,25 @@ jobs:
           cp manifest.json public/manifest.json
           touch public/.nojekyll
           test -s public/index.html
-          echo "Game rebuilt: $(wc -c < public/index.html) bytes"
+          echo "Base game rebuilt: $(wc -c < public/index.html) bytes"
+
+      - name: Apply Version 2 patch
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("public/index.html")
+          html = page.read_text(encoding="utf-8")
+          css = Path("patches/v2.css").read_text(encoding="utf-8")
+          panel = Path("patches/v2.html").read_text(encoding="utf-8")
+          js = Path("patches/v2.js").read_text(encoding="utf-8")
+          html = html.replace("</style>", css + "\n</style>", 1)
+          html = html.replace('<div class="burst" id="burst"></div>', '<div class="burst" id="burst"></div>\n' + panel, 1)
+          html = html.replace("</body>", "<script>\n" + js + "\n</script>\n</body>", 1)
+          page.write_text(html, encoding="utf-8")
+          Path("public/pages-version.json").write_text('{"version":2,"patch":"v2-admin-huge-scale"}', encoding="utf-8")
+          print("Version 2 patch applied:", page.stat().st_size, "bytes")
+          PY
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
