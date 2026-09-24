@@ -24,7 +24,12 @@
     }catch(e){return JSON.parse(JSON.stringify(defaults))}
   }
   let meta=loadMeta();
+  const BOSS_BREAK_REQUIREMENT=100;
   const saveMeta=()=>localStorage.setItem(META_KEY,JSON.stringify(meta));
+  if(!meta.boss.active){
+    meta.boss.ready=Number(meta.breaksSinceBoss||0)>=BOSS_BREAK_REQUIREMENT;
+    saveMeta();
+  }
   const active=k=>Number(meta.boosts[k+'Until']||0)>now();
   const remain=k=>Math.max(0,Math.ceil((Number(meta.boosts[k+'Until']||0)-now())/1000));
   function formatTime(s){if(s<=0)return 'OFF';const m=Math.floor(s/60),r=s%60;return m+':'+String(r).padStart(2,'0')}
@@ -120,7 +125,7 @@
     const extra=Math.floor(baseGain*(mult-1));
     if(extra>0){state.coins+=extra;renderTop()}
     meta.breaks++;meta.breaksSinceBoss++;
-    if(meta.breaksSinceBoss>=20&&!meta.boss.active&&!meta.boss.ready){
+    if(meta.breaksSinceBoss>=BOSS_BREAK_REQUIREMENT&&!meta.boss.active&&!meta.boss.ready){
       meta.boss.ready=true;
       toast('👑 Boss Chest READY! HUBから開始できます');
     }
@@ -151,7 +156,7 @@
 
   function bossStart(){
     if(meta.boss.active)return;
-    if(!meta.boss.ready)return toast('👑 ボス出現までコインをあと '+Math.max(0,20-meta.breaksSinceBoss)+'個破壊');
+    if(!meta.boss.ready)return toast('👑 ボス出現までコインをあと '+Math.max(0,BOSS_BREAK_REQUIREMENT-meta.breaksSinceBoss)+'個破壊');
     const hp=Math.round(currentZone().hp*90*(1+(meta.rebirths||0)*.5));
     meta.boss={active:true,ready:true,hp,maxHp:hp};saveMeta();renderAll();renderHub();toast('👑 巨大宝箱ボス出現！');
   }
@@ -271,7 +276,7 @@
         '<div class="v15-bar"><i style="width:'+pct+'%"></i></div>'+
         '<button class="v15-btn red" onclick="v15BossAttack()">💥 強攻撃</button>';
     }else{
-      body='<div class="v15-big">'+(b.ready?'READY!':meta.breaksSinceBoss+'/20')+'</div>';
+      body='<div class="v15-big">'+(b.ready?'READY!':meta.breaksSinceBoss+'/'+BOSS_BREAK_REQUIREMENT)+'</div>';
       if(b.ready){
         body+='<button class="v15-btn gold" onclick="v15BossStart()">👑 ボスチェスト開始</button>';
       }
@@ -279,7 +284,7 @@
     document.querySelector('#v15-boss').innerHTML=
       '<div class="v15-card">'+
       '<h3>👑 巨大宝箱ボス</h3>'+
-      '<div class="v15-small">通常ターゲットを20個壊すとREADY。自動では始まらず、ここから手動で開始します。撃破で大量コイン + ランダムBoost 5分。<br><b>🐲 Huge Boss Dragon：0.5%</b></div>'+
+      '<div class="v15-small">通常ターゲットを100個壊すとREADY。自動では始まらず、ここから手動で開始します。撃破で大量コイン + ランダムBoost 5分。<br><b>🐲 Huge Boss Dragon：0.5%</b></div>'+
       body+
       '</div>';
   }
