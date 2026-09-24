@@ -1,0 +1,4 @@
+/* Version 12: hide admin UI for public players */
+#adminToggle{display:none!important}
+#adminPanel{display:none}
+#adminPanel.admin-secret-open{display:block!important}
