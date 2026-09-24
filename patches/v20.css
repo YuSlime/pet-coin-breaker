@@ -1,0 +1,96 @@
+/* Version 20: arena Boss Chest + Huge Boss Dragon */
+.coin-target.v20-boss-chest{
+  width:min(70vw,310px)!important;
+  aspect-ratio:1.32!important;
+  border-radius:28px!important;
+  overflow:visible!important;
+  background:
+    linear-gradient(90deg,transparent 0 11%,rgba(255,226,121,.9) 11% 15%,transparent 15% 85%,rgba(255,226,121,.9) 85% 89%,transparent 89%),
+    linear-gradient(180deg,#9b5522 0 18%,#6f3216 19% 53%,#4b210f 54% 100%)!important;
+  border:5px solid #e8b84e!important;
+  box-shadow:
+    0 0 0 8px rgba(255,202,75,.12),
+    0 0 42px rgba(255,173,52,.45),
+    0 28px 60px rgba(0,0,0,.42),
+    inset 0 4px 0 rgba(255,255,255,.18),
+    inset 0 -12px 0 rgba(37,11,5,.22)!important;
+  animation:v20BossChestFloat 1.45s ease-in-out infinite;
+}
+.coin-target.v20-boss-chest::before{
+  content:""!important;
+  position:absolute!important;
+  left:-5%!important;
+  right:-5%!important;
+  top:-27%!important;
+  bottom:auto!important;
+  height:48%!important;
+  border-radius:34px 34px 12px 12px!important;
+  background:
+    linear-gradient(90deg,transparent 0 12%,#f3c454 12% 16%,transparent 16% 84%,#f3c454 84% 88%,transparent 88%),
+    linear-gradient(180deg,#b96a2d,#6d3014)!important;
+  border:5px solid #e8b84e!important;
+  box-shadow:inset 0 5px 0 rgba(255,255,255,.14),0 10px 12px rgba(0,0,0,.18)!important;
+}
+.coin-target.v20-boss-chest::after{
+  content:"👑"!important;
+  position:absolute!important;
+  left:50%!important;
+  top:49%!important;
+  transform:translate(-50%,-50%)!important;
+  font-size:72px!important;
+  line-height:1!important;
+  color:#ffe77b!important;
+  text-shadow:0 0 18px rgba(255,213,80,.95),0 5px 0 rgba(93,45,5,.8)!important;
+  z-index:4!important;
+}
+.v20-boss-active .coin-wrap::before{
+  border-color:rgba(255,198,66,.58)!important;
+  box-shadow:0 0 0 12px rgba(255,188,55,.04),0 0 50px rgba(255,169,44,.28)!important;
+}
+.v20-boss-active #hpBar{
+  background:linear-gradient(90deg,#ff6f45,#ffc94d,#fff29c)!important;
+  box-shadow:0 0 15px rgba(255,191,64,.58);
+}
+@keyframes v20BossChestFloat{
+  0%,100%{transform:translateY(0) rotate(-.5deg)}
+  50%{transform:translateY(-8px) rotate(.5deg)}
+}
+
+.pet-model.theme-boss{
+  --pc1:#ffad45;
+  --pc2:#721b18;
+  --pc3:#fff0a8;
+  --pg:#ffd24e;
+  filter:drop-shadow(0 0 18px rgba(255,94,49,.75)) drop-shadow(0 0 30px rgba(255,204,63,.45)) drop-shadow(0 12px 12px rgba(0,0,0,.38));
+}
+.pet-model.theme-boss .pet-body{
+  background:linear-gradient(145deg,#ff9d3c,#8c241a 55%,#391019)!important;
+  box-shadow:inset 7px 7px 0 rgba(255,255,255,.18),inset -9px -11px 0 rgba(0,0,0,.22),0 0 0 3px #ffd45f,0 0 26px rgba(255,74,38,.62)!important;
+}
+.pet-model.theme-boss .pet-wing{
+  background:linear-gradient(145deg,#ffbc50,#5b1519)!important;
+}
+.pet-model.theme-boss .pet-aura{
+  opacity:1!important;
+  background:radial-gradient(circle,rgba(255,218,83,.95) 0,rgba(255,77,40,.54) 32%,rgba(112,18,52,.28) 58%,transparent 73%)!important;
+}
+.pet-model.theme-boss .pet-crest{
+  font-size:16px!important;
+  filter:drop-shadow(0 0 7px #ffd45f)!important;
+}
+.v20-exclusive-title{
+  margin-top:16px;
+  margin-bottom:8px;
+  font-size:12px;
+  font-weight:1000;
+  color:#ffd66f;
+}
+.v20-drop-note{
+  margin-top:8px;
+  font-size:10px;
+  color:#9fb0c8;
+}
+@media(max-width:560px){
+  .coin-target.v20-boss-chest{width:min(72vw,260px)!important}
+  .coin-target.v20-boss-chest::after{font-size:58px!important}
+}
