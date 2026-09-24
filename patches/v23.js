@@ -10,7 +10,7 @@
     btn.id='v23BossChallenge';
     btn.className='btn';
     btn.type='button';
-    btn.textContent='👑 次に挑む';
+    btn.textContent='👑 ボスチェストに挑む';
     btn.onclick=()=>{
       if(typeof window.v15BossStart==='function')window.v15BossStart();
       sync();
