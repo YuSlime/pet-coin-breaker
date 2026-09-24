@@ -346,6 +346,14 @@ jobs:
       - name: Validate Version 44 five-hatch visibility
         run: python3 patches/validate_v44.py public/index.html
 
+      - name: Apply Version 45 ultra luxury hatch
+        run: python3 patches/apply_v45.py
+
+      - name: Validate Version 45 ultra luxury hatch
+        run: |
+          python3 patches/validate_v45.py public/index.html
+          node --check patches/v45.js
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
