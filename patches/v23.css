@@ -1,0 +1,18 @@
+/* Version 23: manual Boss Chest challenge button */
+#v23BossChallenge{
+  display:none;
+  border:1px solid rgba(255,218,92,.6);
+  background:linear-gradient(180deg,#f0b93e,#9b6515);
+  color:#fff7cf;
+  box-shadow:0 0 18px rgba(255,190,55,.22);
+}
+#v23BossChallenge.ready{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  animation:v23BossReadyPulse 1.25s ease-in-out infinite;
+}
+@keyframes v23BossReadyPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 14px rgba(255,190,55,.2)}
+  50%{transform:scale(1.05);box-shadow:0 0 28px rgba(255,190,55,.48)}
+}
