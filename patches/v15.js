@@ -170,6 +170,7 @@
   }
   window.v15BossDamage=bossDamage;
   window.v15BossAttack=()=>bossDamage(teamPower()*3+state.clickPower*12);
+  window.v15ForceBoss=()=>{if(meta.boss.active)return;meta.boss.ready=true;bossStart()};
   setInterval(()=>{if(meta.boss.active&&!window.__bossArenaRouting)bossDamage(Math.max(1,teamPower()/2))},500);
 
   function qInfo(type){
