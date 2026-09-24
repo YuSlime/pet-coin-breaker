@@ -203,30 +203,6 @@
     persist();saveMeta();renderAll();renderHub();toast('♻️ Rebirth '+meta.rebirths+'！ 永続強化UP');
   };
 
-  function nextMutation(m){return m==='Normal'?'Gold':m==='Gold'?'Diamond':m==='Diamond'?'Rainbow':null}
-  window.v15Fuse=function(){
-    const groups={};
-    state.pets.forEach(p=>{if(meta.locked[p.id])return;const m=p.mutation||'Normal',next=nextMutation(m);if(!next)return;const key=[p.baseName||p.name,m,!!p.isHuge,!!p.isTitanic].join('|');(groups[key]||(groups[key]=[])).push(p)});
-    const g=Object.values(groups).find(a=>a.length>=5);
-    if(!g)return toast('🧬 合成できる同一ペットが5匹いません');
-    const src=g.sort((a,b)=>b.power-a.power).slice(0,5),keep=src[0],old=keep.mutation||'Normal',next=nextMutation(old),oldMul=mutationMultiplier(old),newMul=mutationMultiplier(next),ids=new Set(src.map(p=>p.id));
-    state.pets=state.pets.filter(p=>!ids.has(p.id));state.equipped=state.equipped.filter(id=>!ids.has(id));
-    const baseName=keep.baseName||keep.name.replace(/^(Rainbow|Diamond|Gold) /,'').replace(/^(Titanic|Huge) /,'');
-    const rare=keep.isTitanic?'Titanic':keep.isHuge?'Huge':'';
-    const np={...keep,id:uid(),baseName,mutation:next,mutationMultiplier:newMul,power:Math.max(1,Math.round(keep.power*(newMul/oldMul))),name:[next,rare,baseName].filter(Boolean).join(' ')};
-    state.pets.push(np);autoEquip();persist();renderAll();renderHub();toast('🧬 '+next+' に合成！');
-  };
-
-  window.v15ToggleLock=function(id){
-    meta.locked[id]=!meta.locked[id];if(!meta.locked[id])delete meta.locked[id];saveMeta();renderPets();
-  };
-  const baseRenderPets=renderPets;
-  renderPets=function(){
-    baseRenderPets();
-    const list=state.pets.slice().sort((a,b)=>b.power-a.power).slice(0,36),cards=[...document.querySelectorAll('#pets .pet-card')];
-    cards.forEach((card,i)=>{const p=list[i];if(!p)return;card.classList.toggle('v15-pet-locked',!!meta.locked[p.id]);const b=document.createElement('button');b.className='v15-lock-btn';b.textContent=meta.locked[p.id]?'🔒':'🔓';b.title='合成ロック';b.onclick=e=>{e.stopPropagation();v15ToggleLock(p.id)};card.appendChild(b)});
-  };
-
   window.v15ToggleAuto=function(){
     meta.auto.on=!meta.auto.on;meta.auto.egg=Number(document.querySelector('#v15AutoEgg')?.value||meta.auto.egg||0);saveMeta();renderHub();toast(meta.auto.on?'🥚 Auto Hatch ON':'⏹ Auto Hatch OFF');
   };
@@ -293,8 +269,13 @@
   }
   function renderHatch(){
     const opts=eggs.map((e,i)=>'<option value="'+i+'" '+(Number(meta.auto.egg)===i?'selected':'')+'>'+e.icon+' '+e.name+'</option>').join('');
-    const fuseGroups={};state.pets.forEach(p=>{if(meta.locked[p.id])return;const m=p.mutation||'Normal';if(!nextMutation(m))return;const k=[p.baseName||p.name,m,!!p.isHuge,!!p.isTitanic].join('|');fuseGroups[k]=(fuseGroups[k]||0)+1});const canFuse=Object.values(fuseGroups).some(n=>n>=5);
-    document.querySelector('#v15-hatch').innerHTML='<div class="v15-grid"><div class="v15-card"><h3>🥚 Auto Hatch</h3><select class="v15-select" id="v15AutoEgg" onchange="v15SetAutoEgg(this.value)">'+opts+'</select><div class="v15-small">現在の同時開封数で約2.4秒ごとに自動孵化。Huge/Titanicは通知します。</div><button class="v15-btn '+(meta.auto.on?'red':'green')+'" onclick="v15ToggleAuto()">'+(meta.auto.on?'⏹ STOP':'▶ AUTO START')+'</button></div><div class="v15-card"><h3>🧬 Pet Fusion</h3><div class="v15-small">同じペット5匹を自動合成: Normal → Gold → Diamond → Rainbow。🔒したペットは素材に使いません。</div><button class="v15-btn purple" onclick="v15Fuse()" '+(!canFuse?'disabled':'')+'>5匹を合成</button></div></div>';
+    document.querySelector('#v15-hatch').innerHTML=
+      '<div class="v15-grid">'+
+      '<div class="v15-card"><h3>🥚 Auto Hatch</h3>'+
+      '<select class="v15-select" id="v15AutoEgg" onchange="v15SetAutoEgg(this.value)">'+opts+'</select>'+
+      '<div class="v15-small">現在の同時開封数で約2.4秒ごとに自動孵化。Huge/Titanicは通知します。</div>'+
+      '<button class="v15-btn '+(meta.auto.on?'red':'green')+'" onclick="v15ToggleAuto()">'+(meta.auto.on?'⏹ STOP':'▶ AUTO START')+'</button>'+
+      '</div></div>';
   }
   function renderBoosts(){
     const data=[['coin','🪙 Coin ×2',2500000],['damage','⚔️ Damage ×2',2500000],['luck','🍀 Luck ×2',5000000],['huge','👑 Huge Luck ×2',12000000],['titanic','🌌 Titanic Luck ×2',50000000]];
