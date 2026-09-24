@@ -262,8 +262,26 @@
     document.querySelector('#v15-progress').innerHTML='<div class="v15-grid"><div class="v15-card"><h3>♻️ Rebirth</h3><div class="v15-big">'+meta.rebirths+'</div><div class="v15-small">永続ダメージ ×'+rebirthDamage().toFixed(2)+' / 永続コイン ×'+rebirthCoin().toFixed(2)+'</div><button class="v15-btn purple" onclick="v15Rebirth()" '+(state.coins<cost?'disabled':'')+'>転生する 🪙 '+fmt(cost)+'</button></div><div class="v15-card"><h3>🎁 Daily Reward</h3><div class="v15-big">'+(meta.daily.streak+1)+'/7</div><div class="v15-small">本日の報酬: '+fmt(dailyReward())+' coins'+(meta.daily.streak===6?' + 3種Boost 10分':'')+'</div><button class="v15-btn gold" onclick="v15Daily()" '+(claimed?'disabled':'')+'>'+(claimed?'受取済み':'受け取る')+'</button></div></div><div class="v15-card" style="margin-top:12px"><h3>🌍 新エリア追加</h3><div class="v15-small">☁️ 天空 → 🪐 宇宙 → 🌑 深淵。既存の「次のエリア」ボタンから順番に解放できます。各エリアに専用卵・専用ペットあり。</div></div>';
   }
   function renderBoss(){
-    const b=meta.boss,pct=b.active?Math.max(0,b.hp/b.maxHp*100):0;
-    document.querySelector('#v15-boss').innerHTML='<div class="v15-card"><h3>👑 巨大宝箱ボス</h3><div class="v15-small">通常ターゲットを20個壊すとREADY。自動では始まらず、ここから手動で開始します。撃破で大量コイン + ランダムBoost 5分。</div>'+(b.active?'<div class="v15-big">'+fmt(b.hp)+' / '+fmt(b.maxHp)+'</div><div class="v15-bar"><i style="width:'+pct+'%"></i></div><button class="v15-btn red" onclick="v15BossAttack()">💥 強攻撃</button>':'<div class="v15-big">'+(b.ready?'READY!':meta.breaksSinceBoss+'/20')+'</div>'+(b.ready?'<button class="v15-btn gold" onclick="v15BossStart()">👑 ボスチェスト開始</button>':'')+'</div>';
+    const b=meta.boss;
+    const pct=b.active?Math.max(0,b.hp/b.maxHp*100):0;
+    let body='';
+    if(b.active){
+      body=
+        '<div class="v15-big">'+fmt(b.hp)+' / '+fmt(b.maxHp)+'</div>'+
+        '<div class="v15-bar"><i style="width:'+pct+'%"></i></div>'+
+        '<button class="v15-btn red" onclick="v15BossAttack()">💥 強攻撃</button>';
+    }else{
+      body='<div class="v15-big">'+(b.ready?'READY!':meta.breaksSinceBoss+'/20')+'</div>';
+      if(b.ready){
+        body+='<button class="v15-btn gold" onclick="v15BossStart()">👑 ボスチェスト開始</button>';
+      }
+    }
+    document.querySelector('#v15-boss').innerHTML=
+      '<div class="v15-card">'+
+      '<h3>👑 巨大宝箱ボス</h3>'+
+      '<div class="v15-small">通常ターゲットを20個壊すとREADY。自動では始まらず、ここから手動で開始します。撃破で大量コイン + ランダムBoost 5分。</div>'+
+      body+
+      '</div>';
   }
   window.v15BossStart=bossStart;
   function renderQuests(){
