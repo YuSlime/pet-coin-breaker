@@ -150,6 +150,20 @@ jobs:
           print("Version 9 patch applied:", page.stat().st_size, "bytes")
           PY
 
+      - name: Apply Version 10 Titanic size
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("public/index.html")
+          html = page.read_text(encoding="utf-8")
+          css = Path("patches/v10.css").read_text(encoding="utf-8")
+          html = html.replace("</style>", css + "\n</style>", 1)
+          page.write_text(html, encoding="utf-8")
+          Path("public/pages-version.json").write_text('{"version":10,"patch":"titanic-2x-huge-size"}', encoding="utf-8")
+          print("Version 10 patch applied:", page.stat().st_size, "bytes")
+          PY
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
