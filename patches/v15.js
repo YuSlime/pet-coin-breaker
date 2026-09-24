@@ -152,7 +152,7 @@
   function bossStart(){
     if(meta.boss.active)return;
     if(!meta.boss.ready)return toast('👑 ボス出現までコインをあと '+Math.max(0,20-meta.breaksSinceBoss)+'個破壊');
-    const hp=Math.round(currentZone().hp*30*(1+(meta.rebirths||0)*.5));
+    const hp=Math.round(currentZone().hp*90*(1+(meta.rebirths||0)*.5));
     meta.boss={active:true,ready:true,hp,maxHp:hp};saveMeta();renderAll();renderHub();toast('👑 巨大宝箱ボス出現！');
   }
   function bossDamage(amount){
@@ -169,7 +169,7 @@
     }else{saveMeta();renderHub()}
   }
   window.v15BossDamage=bossDamage;
-  window.v15BossAttack=()=>bossDamage(teamPower()*3+state.clickPower*12);
+  window.v15BossAttack=()=>bossDamage(teamPower()*1.2+state.clickPower*5);
   window.v15ForceBoss=()=>{if(meta.boss.active)return;meta.boss.ready=true;bossStart()};
   setInterval(()=>{if(meta.boss.active&&!window.__bossArenaRouting)bossDamage(Math.max(1,teamPower()/2))},500);
 
