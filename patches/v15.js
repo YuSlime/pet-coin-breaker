@@ -120,7 +120,10 @@
     const extra=Math.floor(baseGain*(mult-1));
     if(extra>0){state.coins+=extra;renderTop()}
     meta.breaks++;meta.breaksSinceBoss++;
-    if(meta.breaksSinceBoss>=20&&!meta.boss.active)meta.boss.ready=true;
+    if(meta.breaksSinceBoss>=20&&!meta.boss.active){
+      meta.boss.ready=true;
+      bossStart();
+    }
     saveMeta();renderHub();
   };
 
@@ -150,7 +153,7 @@
     if(meta.boss.active)return;
     if(!meta.boss.ready)return toast('👑 ボス出現までコインをあと '+Math.max(0,20-meta.breaksSinceBoss)+'個破壊');
     const hp=Math.round(currentZone().hp*30*(1+(meta.rebirths||0)*.5));
-    meta.boss={active:true,ready:true,hp,maxHp:hp};saveMeta();renderHub();toast('👑 巨大宝箱ボス出現！');
+    meta.boss={active:true,ready:true,hp,maxHp:hp};saveMeta();renderAll();renderHub();toast('👑 巨大宝箱ボス出現！');
   }
   function bossDamage(amount){
     if(!meta.boss.active)return;
@@ -161,11 +164,13 @@
       state.coins+=reward;meta.bosses++;meta.breaksSinceBoss=0;meta.boss={active:false,ready:false,hp:0,maxHp:0};
       const keys=['coin','damage','luck','huge','titanic'],k=keys[Math.floor(Math.random()*keys.length)];
       meta.boosts[k+'Until']=Math.max(now(),meta.boosts[k+'Until']||0)+5*60*1000;
+      if(window.v20BossDrop)window.v20BossDrop();
       persist();saveMeta();renderAll();renderHub();toast('🏆 ボス撃破 +'+fmt(reward)+' / '+k+' Boost 5分');
     }else{saveMeta();renderHub()}
   }
+  window.v15BossDamage=bossDamage;
   window.v15BossAttack=()=>bossDamage(teamPower()*3+state.clickPower*12);
-  setInterval(()=>{if(meta.boss.active)bossDamage(Math.max(1,teamPower()/2))},500);
+  setInterval(()=>{if(meta.boss.active&&!window.__bossArenaRouting)bossDamage(Math.max(1,teamPower()/2))},500);
 
   function qInfo(type){
     const q=meta.quests[type],level=q.level||1,cur=type==='break'?meta.breaks:type==='hatch'?meta.hatches:meta.bosses,target=(type==='break'?100:type==='hatch'?25:1)*level,prog=Math.max(0,cur-(q.base||0)),reward=Math.round((type==='break'?50000:type==='hatch'?100000:500000)*level*zoneFactor());
