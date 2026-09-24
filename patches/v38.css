@@ -1,0 +1,32 @@
+/* Version 38: center pet mini icons inside their frames */
+.pet-mini-avatar,
+.pet-tab-avatar,
+.pet-card .pet-visual-wrap{
+  position:relative;
+}
+.pet-card .pet-visual-wrap{
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:visible!important;
+}
+.pet-mini-avatar .pet-model,
+.pet-tab-avatar .pet-model{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  margin:0!important;
+  transform-origin:center center!important;
+}
+.pet-mini-avatar .pet-model{
+  transform:translate(-50%,-50%) scale(.42)!important;
+}
+.pet-drop-chip .pet-mini-avatar .pet-model{
+  transform:translate(-50%,-50%) scale(.38)!important;
+}
+.pet-tab-avatar .pet-model{
+  transform:translate(-50%,-50%) scale(.28)!important;
+}
+.pet-card .pet-visual-wrap > .pet-model{
+  margin:0 auto!important;
+}
