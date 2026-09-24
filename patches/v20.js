@@ -141,8 +141,6 @@
   }
 
   setTimeout(()=>{
-    const m=bossMeta();
-    if(m?.boss?.ready&&!m?.boss?.active&&typeof window.v15BossStart==='function')window.v15BossStart();
     syncBossVisual();
   },0);
 
