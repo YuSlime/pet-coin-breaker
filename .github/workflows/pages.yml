@@ -331,6 +331,9 @@ jobs:
       - name: Apply Version 41 full hatch FX
         run: python3 patches/apply_v41.py
 
+      - name: Apply Version 42 admin area sync
+        run: python3 patches/apply_v42.py
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
