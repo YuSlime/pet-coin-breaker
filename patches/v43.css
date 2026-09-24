@@ -1,0 +1,111 @@
+/* Version 43: cinematic hatch — anticipation, impact, silhouette, haptics companion visuals */
+.hatch{--v43c:var(--rc,#fff);--v43accent:#fff}
+.hatch.v43-pre-Rare{--v43c:#65bbff;--v43accent:#dff3ff}
+.hatch.v43-pre-Epic{--v43c:#c18bff;--v43accent:#f0ddff}
+.hatch.v43-pre-Legendary{--v43c:#ffd45f;--v43accent:#fff4b8}
+.hatch.v43-pre-Rainbow{--v43c:#ff76d8;--v43accent:#8ff7ff}
+.hatch.v43-pre-Huge{--v43c:#ffe36f;--v43accent:#ff91d8}
+.hatch.v43-pre-Titanic{--v43c:#82efff;--v43accent:#ff76e5}
+
+.v43-cinematic{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden;opacity:0;transition:opacity .25s ease}
+.hatch.show .v43-cinematic{opacity:1}
+.v43-vignette{position:absolute;inset:0;background:radial-gradient(circle at 50% 48%,transparent 28%,rgba(0,0,0,.22) 58%,rgba(0,0,0,.7) 100%);opacity:.54}
+.v43-letterbox::before,.v43-letterbox::after{content:"";position:absolute;left:0;right:0;height:0;background:#000;transition:height .24s ease;box-shadow:0 0 24px rgba(0,0,0,.5)}
+.v43-letterbox::before{top:0}.v43-letterbox::after{bottom:0}
+.hatch.v43-pre-Huge .v43-letterbox::before,.hatch.v43-pre-Huge .v43-letterbox::after{height:3.5vh}
+.hatch.v43-pre-Titanic .v43-letterbox::before,.hatch.v43-pre-Titanic .v43-letterbox::after{height:5vh}
+
+.v43-magic-circle{position:absolute;left:50%;top:50%;width:min(72vw,470px);aspect-ratio:1;border-radius:50%;transform:translate(-50%,-50%) scale(.68);opacity:0;border:2px solid color-mix(in srgb,var(--v43c) 68%,transparent);box-shadow:0 0 22px color-mix(in srgb,var(--v43c) 30%,transparent),inset 0 0 28px color-mix(in srgb,var(--v43c) 15%,transparent);transition:opacity .25s ease,transform .35s ease}
+.v43-magic-circle::before,.v43-magic-circle::after{content:"";position:absolute;border-radius:50%;inset:11%;border:2px dashed color-mix(in srgb,var(--v43accent) 55%,transparent)}
+.v43-magic-circle::after{inset:24%;border-style:solid;border-width:1px;box-shadow:0 0 18px color-mix(in srgb,var(--v43c) 34%,transparent)}
+.v43-runes{position:absolute;inset:-7%;border-radius:50%;background:repeating-conic-gradient(from 0deg,color-mix(in srgb,var(--v43c) 0%,transparent) 0deg 8deg,color-mix(in srgb,var(--v43c) 55%,transparent) 8deg 9deg,transparent 9deg 17deg);mask:radial-gradient(circle,transparent 59%,#000 60% 64%,transparent 65%);opacity:.68;animation:v43RuneSpin 7s linear infinite}
+.hatch.v41-charge .v43-magic-circle{opacity:.45;transform:translate(-50%,-50%) scale(.82);animation:v43CircleBreathe 1.25s ease-in-out infinite}
+.hatch.v43-pre-Epic.v41-charge .v43-magic-circle,.hatch.v43-pre-Legendary.v41-charge .v43-magic-circle{opacity:.68}
+.hatch.v43-pre-Huge.v41-charge .v43-magic-circle,.hatch.v43-pre-Titanic.v41-charge .v43-magic-circle{opacity:.9;transform:translate(-50%,-50%) scale(1)}
+.hatch.v43-slowmo .v43-magic-circle{opacity:1;transform:translate(-50%,-50%) scale(.62);filter:brightness(1.55)}
+
+.v43-pull-field{position:absolute;inset:0}
+.v43-pull-particle{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--v43c);box-shadow:0 0 10px 3px color-mix(in srgb,var(--v43c) 70%,transparent);opacity:0;transform:translate(var(--sx),var(--sy)) scale(var(--ss,.8))}
+.hatch.v41-charge .v43-pull-particle{animation:v43PullIn var(--dur,1s) var(--delay,0s) linear infinite}
+.hatch.v43-slowmo .v43-pull-particle{animation-duration:.44s}
+
+.v43-core-flare{position:absolute;left:50%;top:50%;width:110px;height:110px;border-radius:50%;transform:translate(-50%,-50%) scale(.35);background:radial-gradient(circle,#fff 0 8%,color-mix(in srgb,var(--v43c) 75%,transparent) 18%,transparent 68%);filter:blur(1px);opacity:0}
+.hatch.v43-slowmo .v43-core-flare{animation:v43CoreCharge .22s ease-out both}
+.hatch.v43-slowmo .hatch-stage{transition:transform .16s ease,filter .16s ease;transform:scale(1.12)!important;filter:brightness(1.38) saturate(1.18)}
+.hatch.v43-slowmo .hatch-kicker{letter-spacing:.48em;transform:scale(1.06);filter:brightness(1.35)}
+
+.v43-color-flash{position:absolute;inset:0;background:var(--v43c);mix-blend-mode:screen;opacity:0}
+.v43-impact-lines{position:absolute;left:50%;top:50%;width:1px;height:1px}
+.v43-impact-line{position:absolute;left:0;top:0;width:4px;height:150px;border-radius:99px;background:linear-gradient(to top,var(--v43c),transparent);transform-origin:50% 0;opacity:0;filter:drop-shadow(0 0 8px var(--v43c))}
+.v43-land-ring{position:absolute;left:50%;top:57%;width:120px;height:44px;border-radius:50%;border:4px solid var(--v43c);box-shadow:0 0 28px var(--v43c),inset 0 0 18px color-mix(in srgb,var(--v43c) 55%,transparent);opacity:0;transform:translate(-50%,-50%) scale(.25)}
+.hatch.v43-reveal-impact .v43-color-flash{animation:v43ColorFlash .48s ease-out both}
+.hatch.v43-reveal-impact .v43-impact-line{animation:v43ImpactLine .7s cubic-bezier(.08,.76,.18,1) both}
+.hatch.v43-reveal-impact .v43-land-ring{animation:v43LandRing .8s .18s cubic-bezier(.1,.8,.16,1) both}
+.hatch.v43-reveal-impact .hatch-inner{animation:v43CameraKick .48s cubic-bezier(.2,.8,.2,1)!important}
+
+.v43-silhouette{position:absolute;left:50%;top:48%;z-index:18;width:360px;height:360px;display:grid;place-items:center;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.72)}
+.v43-silhouette-pet{width:260px;height:260px;display:grid;place-items:center;filter:brightness(0) drop-shadow(0 0 18px var(--v43c)) drop-shadow(0 0 42px color-mix(in srgb,var(--v43c) 70%,transparent))}
+.v43-silhouette-pet .pet-model{transform:scale(2.2)!important}
+.hatch.v43-pre-Huge .v43-silhouette-pet .pet-model{transform:scale(3.2)!important}
+.hatch.v43-pre-Titanic .v43-silhouette-pet .pet-model{transform:scale(4.1)!important}
+.hatch.v43-silhouette-phase .v43-silhouette{animation:v43Silhouette .34s ease-out both}
+.hatch.v43-silhouette-phase #hatchResult{opacity:0!important}
+.hatch.v43-materialized #hatchResult{opacity:1!important;transform:scale(1)!important}
+.hatch.v43-materialized .hatch-pet{animation:v43Materialize .68s cubic-bezier(.12,1.25,.24,1) both!important;transform-origin:50% 72%}
+
+.hatch.v43-reveal-impact .rarity-banner{filter:brightness(1.22) saturate(1.2)}
+.hatch.v43-pre-Legendary.v43-reveal-impact .rarity-banner{font-size:clamp(58px,10vw,108px)!important;text-shadow:0 0 20px #fff,0 0 48px #ffd45f,0 9px 0 rgba(0,0,0,.25)!important}
+.hatch.v43-pre-Huge.v43-reveal-impact .rarity-banner{font-size:clamp(64px,11vw,118px)!important;text-shadow:0 0 20px #fff,0 0 50px #ffe36f,0 0 78px #ff76cf,0 10px 0 rgba(0,0,0,.28)!important}
+.hatch.v43-pre-Titanic.v43-reveal-impact .rarity-banner{font-size:clamp(70px,12vw,130px)!important;text-shadow:0 0 22px #fff,0 0 50px #82efff,0 0 82px #ff76e5,0 0 120px #7869ff,0 11px 0 rgba(0,0,0,.32)!important}
+
+.hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card{opacity:0!important;transform:translateY(52px) scale(.7) rotate(-3deg)!important}
+.hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card.v43-stagger-show{animation:v43StaggerCard .62s cubic-bezier(.1,1.3,.22,1) forwards!important}
+.hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card.v39-rarity-Legendary.v43-stagger-show,
+.hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card.huge-result.v43-stagger-show,
+.hatch.revealed.multi-mode .multi-hatch-item.v43-stagger-card.titanic-result.v43-stagger-show{animation:v43StaggerRare .78s cubic-bezier(.08,1.42,.2,1) forwards!important}
+
+.v43-best-showcase{position:absolute;inset:0;z-index:28;display:grid;place-items:center;pointer-events:none;opacity:0;visibility:hidden;background:radial-gradient(circle at 50% 48%,color-mix(in srgb,var(--v43c) 22%,rgba(4,8,18,.4)),rgba(2,4,12,.82) 64%);backdrop-filter:blur(4px)}
+.v43-best-showcase.v43-best-show{visibility:visible;animation:v43BestShow 1.48s cubic-bezier(.1,.8,.2,1) both}
+.v43-best-card{text-align:center;min-width:min(84vw,420px);padding:18px 24px 22px;border-radius:26px;border:1px solid color-mix(in srgb,var(--v43c) 52%,transparent);background:linear-gradient(180deg,rgba(20,28,50,.88),rgba(7,12,25,.9));box-shadow:0 0 0 1px rgba(255,255,255,.06),0 0 60px color-mix(in srgb,var(--v43c) 24%,transparent),0 24px 70px rgba(0,0,0,.5)}
+.v43-best-label{font-size:11px;font-weight:1000;letter-spacing:.32em;color:#fff;opacity:.8;margin-bottom:7px}
+.v43-best-rarity{font-size:20px;font-weight:1000;letter-spacing:.12em;color:var(--v43c);text-shadow:0 0 16px var(--v43c)}
+.v43-best-pet{height:190px;display:grid;place-items:center;margin:3px 0}
+.v43-best-pet .pet-model{transform:scale(1.75)!important}
+.hatch.v43-pre-Huge .v43-best-pet .pet-model{transform:scale(2.5)!important}
+.hatch.v43-pre-Titanic .v43-best-pet .pet-model{transform:scale(3.25)!important}
+.v43-best-name{font-size:26px;font-weight:1000;text-shadow:0 5px 18px rgba(0,0,0,.55)}
+
+.hatch.v43-pre-Rare.v41-charge{background:radial-gradient(circle at 50% 48%,rgba(45,122,190,.2),rgba(2,5,12,.97) 69%)}
+.hatch.v43-pre-Epic.v41-charge{background:radial-gradient(circle at 50% 48%,rgba(123,64,183,.26),rgba(2,5,12,.97) 69%)}
+.hatch.v43-pre-Legendary.v41-charge{background:radial-gradient(circle at 50% 48%,rgba(198,141,35,.27),rgba(2,5,12,.98) 69%)}
+.hatch.v43-pre-Huge.v41-charge{background:radial-gradient(circle at 50% 48%,rgba(227,166,42,.25),rgba(146,50,105,.13) 38%,rgba(2,5,12,.985) 72%)}
+.hatch.v43-pre-Titanic.v41-charge{background:radial-gradient(circle at 50% 48%,rgba(40,190,214,.23),rgba(161,42,159,.18) 39%,rgba(2,3,15,.99) 73%)}
+
+@keyframes v43RuneSpin{to{transform:rotate(-360deg)}}
+@keyframes v43CircleBreathe{0%,100%{filter:brightness(.9);box-shadow:0 0 18px color-mix(in srgb,var(--v43c) 26%,transparent)}50%{filter:brightness(1.35);box-shadow:0 0 46px color-mix(in srgb,var(--v43c) 46%,transparent)}}
+@keyframes v43PullIn{0%{opacity:0;transform:translate(var(--sx),var(--sy)) scale(var(--ss,.8))}18%{opacity:.8}82%{opacity:.95}100%{opacity:0;transform:translate(0,0) scale(.08)}}
+@keyframes v43CoreCharge{0%{opacity:0;transform:translate(-50%,-50%) scale(.2)}70%{opacity:1;transform:translate(-50%,-50%) scale(1.55)}100%{opacity:.1;transform:translate(-50%,-50%) scale(.6)}}
+@keyframes v43ColorFlash{0%{opacity:.78}18%{opacity:.15}36%{opacity:.52}100%{opacity:0}}
+@keyframes v43ImpactLine{0%{opacity:1;transform:rotate(var(--r)) translateY(-20px) scaleY(.18)}100%{opacity:0;transform:rotate(var(--r)) translateY(-340px) scaleY(1.15)}}
+@keyframes v43LandRing{0%{opacity:1;transform:translate(-50%,-50%) scale(.25)}100%{opacity:0;transform:translate(-50%,-50%) scale(4.7,.8)}}
+@keyframes v43CameraKick{0%{transform:scale(.9)}22%{transform:scale(1.055)}48%{transform:scale(.985)}100%{transform:scale(1)}}
+@keyframes v43Silhouette{0%{opacity:0;transform:translate(-50%,-50%) scale(.48) rotate(-7deg)}45%{opacity:1;transform:translate(-50%,-50%) scale(1.08) rotate(2deg)}100%{opacity:.92;transform:translate(-50%,-50%) scale(1)}}
+@keyframes v43Materialize{0%{opacity:0;transform:translateY(75px) scale(.62) rotate(-10deg);filter:brightness(4) blur(8px)}55%{opacity:1;transform:translateY(-17px) scale(1.11) rotate(3deg);filter:brightness(1.65) blur(0)}82%{transform:translateY(6px) scale(.97) rotate(-1deg);filter:brightness(1.08)}100%{opacity:1;transform:none;filter:none}}
+@keyframes v43StaggerCard{0%{opacity:0;transform:translateY(52px) scale(.7) rotate(-3deg)}70%{opacity:1;transform:translateY(-7px) scale(1.055) rotate(.8deg)}100%{opacity:1;transform:none}}
+@keyframes v43StaggerRare{0%{opacity:0;transform:translateY(70px) scale(.55) rotate(-5deg);filter:brightness(2.4)}62%{opacity:1;transform:translateY(-12px) scale(1.12) rotate(1.5deg);filter:brightness(1.25)}100%{opacity:1;transform:none;filter:none}}
+@keyframes v43BestShow{0%{opacity:0;transform:scale(.92)}15%{opacity:1;transform:scale(1.02)}70%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.04)}}
+
+@media(max-width:560px){
+  .v43-magic-circle{width:min(92vw,390px)}
+  .v43-silhouette{width:280px;height:280px}
+  .v43-silhouette-pet{width:210px;height:210px}
+  .v43-silhouette-pet .pet-model{transform:scale(1.7)!important}
+  .hatch.v43-pre-Huge .v43-silhouette-pet .pet-model{transform:scale(2.35)!important}
+  .hatch.v43-pre-Titanic .v43-silhouette-pet .pet-model{transform:scale(3)!important}
+  .v43-best-pet{height:155px}
+  .v43-best-name{font-size:21px}
+}
+@media(prefers-reduced-motion:reduce){
+  .v43-runes,.v43-pull-particle,.v43-impact-line,.v43-land-ring,.v43-silhouette,.v43-best-showcase{animation:none!important}
+  .hatch.v43-slowmo .hatch-stage{transform:none!important;filter:none!important}
+}
