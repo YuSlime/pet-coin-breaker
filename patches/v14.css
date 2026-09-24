@@ -1,0 +1,63 @@
+/* Version 14: redeem code panel */
+.redeem-code-box{
+  position:fixed;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:60;
+  width:180px;
+  padding:12px;
+  border-radius:16px;
+  background:rgba(10,18,34,.94);
+  border:1px solid rgba(120,170,255,.28);
+  box-shadow:0 14px 30px rgba(0,0,0,.35),0 0 22px rgba(90,150,255,.08);
+  backdrop-filter:blur(8px);
+}
+.redeem-code-title{
+  font-weight:1000;
+  font-size:13px;
+  margin-bottom:8px;
+  color:#eaf4ff;
+}
+.redeem-code-row{
+  display:flex;
+  gap:6px;
+}
+.redeem-code-input{
+  min-width:0;
+  flex:1;
+  padding:9px 10px;
+  border-radius:10px;
+  border:1px solid rgba(255,255,255,.16);
+  background:#0b1426;
+  color:#fff;
+  outline:none;
+}
+.redeem-code-btn{
+  padding:9px 10px;
+  border:none;
+  border-radius:10px;
+  font-weight:1000;
+  cursor:pointer;
+  background:linear-gradient(180deg,#7fd4ff,#4c8dff);
+  color:#07111f;
+}
+.redeem-code-status{
+  min-height:16px;
+  margin-top:7px;
+  font-size:11px;
+  color:#a9bad2;
+}
+@media(max-width:760px){
+  .redeem-code-box{
+    right:8px;
+    top:auto;
+    bottom:88px;
+    transform:none;
+    width:160px;
+    padding:10px;
+  }
+  .redeem-code-title{font-size:12px}
+  .redeem-code-input{padding:8px 8px}
+  .redeem-code-btn{padding:8px 9px}
+}
