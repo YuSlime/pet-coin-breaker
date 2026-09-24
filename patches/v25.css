@@ -1,0 +1,7 @@
+/* Version 25: remove Boss Chest challenge button flicker */
+#v23BossChallenge.ready{
+  animation:none!important;
+  transform:none!important;
+  opacity:1!important;
+  box-shadow:0 0 18px rgba(255,190,55,.28)!important;
+}
