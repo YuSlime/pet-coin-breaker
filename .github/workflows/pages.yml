@@ -227,6 +227,23 @@ jobs:
           print("Version 14 patch applied:", page.stat().st_size, "bytes")
           PY
 
+      - name: Apply Version 15 mega systems
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("public/index.html")
+          html = page.read_text(encoding="utf-8")
+          css = Path("patches/v15.css").read_text(encoding="utf-8")
+          panel = Path("patches/v15.html").read_text(encoding="utf-8")
+          js = Path("patches/v15.js").read_text(encoding="utf-8")
+          html = html.replace("</style>", css + "\n</style>", 1)
+          html = html.replace("</body>", panel + "\n<script>\n" + js + "\n</script>\n</body>", 1)
+          page.write_text(html, encoding="utf-8")
+          Path("public/pages-version.json").write_text('{"version":15,"patch":"mega-progression-systems"}', encoding="utf-8")
+          print("Version 15 patch applied:", page.stat().st_size, "bytes")
+          PY
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
