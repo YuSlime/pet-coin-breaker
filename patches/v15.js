@@ -120,9 +120,9 @@
     const extra=Math.floor(baseGain*(mult-1));
     if(extra>0){state.coins+=extra;renderTop()}
     meta.breaks++;meta.breaksSinceBoss++;
-    if(meta.breaksSinceBoss>=20&&!meta.boss.active&&!meta.boss.ready){
+    if(meta.breaksSinceBoss>=20&&!meta.boss.active){
       meta.boss.ready=true;
-      toast('👑 Boss Chestに挑戦可能！「次に挑む」を押そう');
+      bossStart();
     }
     saveMeta();renderHub();
   };
