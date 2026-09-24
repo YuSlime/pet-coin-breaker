@@ -293,9 +293,9 @@ jobs:
         run: |
           python3 -c "from pathlib import Path; p=Path('public/index.html'); h=p.read_text(encoding='utf-8'); h=h.replace('</body>', '<script>\n'+Path('patches/v22.js').read_text(encoding='utf-8')+'\n</script>\n</body>', 1); p.write_text(h, encoding='utf-8'); Path('public/pages-version.json').write_text('{\"version\":22,\"patch\":\"boss-hp-strong-attack-balance\"}', encoding='utf-8')"
 
-      - name: Apply Version 23 manual boss challenge
+      - name: Apply Version 24 boss button text
         run: |
-          python3 -c "from pathlib import Path; p=Path('public/index.html'); h=p.read_text(encoding='utf-8'); h=h.replace('</style>', Path('patches/v23.css').read_text(encoding='utf-8')+'\n</style>', 1); h=h.replace('</body>', '<script>\n'+Path('patches/v23.js').read_text(encoding='utf-8')+'\n</script>\n</body>', 1); p.write_text(h, encoding='utf-8'); Path('public/pages-version.json').write_text('{\"version\":23,\"patch\":\"manual-boss-challenge-button\"}', encoding='utf-8')"
+          python3 -c "from pathlib import Path; p=Path('public/index.html'); h=p.read_text(encoding='utf-8'); h=h.replace('</style>', Path('patches/v23.css').read_text(encoding='utf-8')+'\n</style>', 1); h=h.replace('</body>', '<script>\n'+Path('patches/v23.js').read_text(encoding='utf-8')+'\n</script>\n</body>', 1); p.write_text(h, encoding='utf-8'); Path('public/pages-version.json').write_text('{\"version\":24,\"patch\":\"boss-chest-button-text\"}', encoding='utf-8')"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
