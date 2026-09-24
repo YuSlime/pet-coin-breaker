@@ -120,9 +120,9 @@
     const extra=Math.floor(baseGain*(mult-1));
     if(extra>0){state.coins+=extra;renderTop()}
     meta.breaks++;meta.breaksSinceBoss++;
-    if(meta.breaksSinceBoss>=20&&!meta.boss.active){
+    if(meta.breaksSinceBoss>=20&&!meta.boss.active&&!meta.boss.ready){
       meta.boss.ready=true;
-      bossStart();
+      toast('👑 Boss Chestに挑戦可能！「次に挑む」を押そう');
     }
     saveMeta();renderHub();
   };
@@ -263,7 +263,7 @@
   }
   function renderBoss(){
     const b=meta.boss,pct=b.active?Math.max(0,b.hp/b.maxHp*100):0;
-    document.querySelector('#v15-boss').innerHTML='<div class="v15-card"><h3>👑 巨大宝箱ボス</h3><div class="v15-small">通常ターゲットを20個壊すごとに出現。撃破で大量コイン + ランダムBoost 5分。</div>'+(b.active?'<div class="v15-big">'+fmt(b.hp)+' / '+fmt(b.maxHp)+'</div><div class="v15-bar"><i style="width:'+pct+'%"></i></div><button class="v15-btn red" onclick="v15BossAttack()">💥 強攻撃</button>':'<div class="v15-big">'+(b.ready?'READY!':meta.breaksSinceBoss+'/20')+'</div><button class="v15-btn gold" onclick="v15BossStart()" '+(!b.ready?'disabled':'')+'>👑 ボス戦開始</button>')+'</div>';
+    document.querySelector('#v15-boss').innerHTML='<div class="v15-card"><h3>👑 巨大宝箱ボス</h3><div class="v15-small">通常ターゲットを20個壊すごとに出現。撃破で大量コイン + ランダムBoost 5分。</div>'+(b.active?'<div class="v15-big">'+fmt(b.hp)+' / '+fmt(b.maxHp)+'</div><div class="v15-bar"><i style="width:'+pct+'%"></i></div><button class="v15-btn red" onclick="v15BossAttack()">💥 強攻撃</button>':'<div class="v15-big">'+(b.ready?'READY!':meta.breaksSinceBoss+'/20')+'</div><button class="v15-btn gold" onclick="v15BossStart()" '+(!b.ready?'disabled':'')+'>👑 次に挑む</button>')+'</div>';
   }
   window.v15BossStart=bossStart;
   function renderQuests(){
