@@ -158,7 +158,7 @@
     if(meta.boss.active)return;
     if(!meta.boss.ready)return toast('👑 ボス出現までコインをあと '+Math.max(0,BOSS_BREAK_REQUIREMENT-meta.breaksSinceBoss)+'個破壊');
     const hp=Math.round(currentZone().hp*90*(1+(meta.rebirths||0)*.5));
-    meta.boss={active:true,ready:true,hp,maxHp:hp};saveMeta();renderAll();renderHub();toast('👑 巨大宝箱ボス出現！');
+    meta.boss={active:true,ready:true,hp,maxHp:hp,v22Scaled:true,balanceVersion:39};saveMeta();renderAll();renderHub();toast('👑 巨大宝箱ボス出現！');
   }
   function bossDamage(amount){
     if(!meta.boss.active)return;
