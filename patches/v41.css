@@ -1,0 +1,235 @@
+/* Version 41: full satisfying hatch sequence */
+
+/* FX layer */
+.v41-hatch-fx{
+  position:absolute;inset:0;z-index:7;pointer-events:none;overflow:hidden;
+}
+.v41-whiteout{
+  position:absolute;inset:0;background:#fff;opacity:0;
+}
+.v41-impact-wave{
+  position:absolute;left:50%;top:50%;width:90px;height:90px;border-radius:50%;
+  border:4px solid rgba(255,255,255,.86);
+  box-shadow:0 0 30px rgba(255,255,255,.7),inset 0 0 25px rgba(255,255,255,.35);
+  opacity:0;transform:translate(-50%,-50%) scale(.2);
+}
+.v41-starfield{position:absolute;inset:0}
+.v41-star{
+  position:absolute;left:50%;top:48%;
+  width:8px;height:8px;border-radius:50%;
+  background:currentColor;box-shadow:0 0 14px 4px currentColor;
+  opacity:0;
+}
+.v41-shell-shards{position:absolute;inset:0}
+.v41-shard{
+  position:absolute;left:50%;top:48%;
+  width:38px;height:48px;
+  background:linear-gradient(145deg,#fff,#dceaff 55%,#9dbbff);
+  border:2px solid rgba(255,255,255,.85);
+  clip-path:polygon(0 10%,100% 0,82% 78%,28% 100%);
+  filter:drop-shadow(0 8px 7px rgba(0,0,0,.28));
+  opacity:0;
+}
+
+/* charge — floating, breathing, harder shake near crack */
+.hatch.v41-charge .hatch-stage{
+  animation:v41StageFloat 1.05s ease-in-out infinite;
+}
+.hatch.v41-charge .hatch-egg{
+  animation:v41EggCharge .72s cubic-bezier(.42,0,.25,1) infinite!important;
+  filter:drop-shadow(0 18px 24px rgba(0,0,0,.42)) drop-shadow(0 0 14px rgba(183,216,255,.28));
+}
+.hatch.v41-charge .egg-aura{
+  animation:v41AuraCharge .8s ease-in-out infinite!important;
+}
+.hatch.v41-charge .egg-ring{
+  animation:v41RingCharge .82s ease-out infinite!important;
+}
+.hatch.v41-charge.crack1 .hatch-stage{
+  animation:v41StageShake1 .14s linear infinite;
+}
+.hatch.v41-charge.crack2 .hatch-stage{
+  animation:v41StageShake2 .07s linear infinite;
+}
+.hatch.v41-charge.crack2 .hatch-egg{
+  filter:brightness(1.35) drop-shadow(0 0 34px rgba(255,255,255,.9)) drop-shadow(0 18px 24px rgba(0,0,0,.42))!important;
+}
+
+/* reveal explosion */
+.hatch.v41-reveal .v41-whiteout{animation:v41Whiteout .36s ease-out both}
+.hatch.v41-reveal .v41-impact-wave{animation:v41ImpactWave .65s cubic-bezier(.12,.82,.2,1) both}
+.hatch.v41-reveal .v41-shard{
+  animation:v41ShardFly .82s cubic-bezier(.1,.76,.18,1) both;
+}
+.hatch.v41-reveal .v41-star{
+  animation:v41StarFly 1.05s cubic-bezier(.1,.75,.2,1) both;
+}
+
+/* Pet jumps out and lands */
+.hatch.revealed .hatch-pet .pet-model{
+  animation:v41PetLaunch .72s cubic-bezier(.12,1.28,.26,1) both!important;
+  transform-origin:50% 72%!important;
+}
+.hatch.revealed .hatch-name{
+  font-size:clamp(32px,6vw,52px)!important;
+  animation:v41NameLand .58s .18s cubic-bezier(.14,1.3,.24,1) both;
+}
+.hatch.revealed .hatch-power{
+  animation:v41PowerIn .45s .34s ease-out both;
+}
+.hatch.revealed .hatch-rarity{
+  animation:v41RarityIn .45s .08s ease-out both;
+}
+
+/* Stronger rarity identity */
+.hatch.revealed.rarity-Rare .hatch-name{
+  text-shadow:0 0 15px #65bbff,0 5px 18px rgba(0,0,0,.5)!important;
+}
+.hatch.revealed.rarity-Epic .hatch-name{
+  text-shadow:0 0 18px #c18bff,0 0 34px rgba(174,90,255,.45),0 5px 18px rgba(0,0,0,.5)!important;
+}
+.hatch.revealed.rarity-Legendary .hatch-name{
+  text-shadow:0 0 18px #ffe783,0 0 44px rgba(255,190,40,.5),0 6px 20px rgba(0,0,0,.55)!important;
+}
+.hatch.revealed.rarity-Huge .hatch-name{
+  font-size:clamp(38px,7vw,62px)!important;
+  text-shadow:0 0 22px #ffe988,0 0 48px #ff8dcc88,0 6px 22px rgba(0,0,0,.58)!important;
+}
+.hatch.revealed.rarity-Titanic .hatch-name{
+  font-size:clamp(42px,7.5vw,70px)!important;
+  text-shadow:0 0 24px #83efff,0 0 50px #ff6bea99,0 0 80px #7f69ff88,0 7px 24px rgba(0,0,0,.65)!important;
+}
+
+/* Banner punch */
+.hatch.revealed .rarity-banner{
+  font-style:italic;
+  animation:v41BannerPunch .72s .04s cubic-bezier(.12,1.35,.2,1) both!important;
+}
+.hatch.revealed.rarity-Huge .rarity-banner,
+.hatch.revealed.rarity-Titanic .rarity-banner{
+  top:9%!important;
+}
+
+/* Multi hatch: cards arrive one after another */
+.hatch.revealed.multi-mode .multi-hatch-item{
+  opacity:0;
+  transform:translateY(42px) scale(.78) rotate(-2deg);
+}
+.hatch.revealed.multi-mode .multi-hatch-item.v41-card-enter{
+  animation:v41CardEnter .56s cubic-bezier(.12,1.24,.24,1) forwards!important;
+}
+.multi-hatch-summary.v41-summary-enter{
+  animation:v41SummaryIn .45s ease-out both;
+}
+
+/* Rare cards pop harder */
+.multi-hatch-item.v39-rarity-Legendary.v41-card-enter,
+.multi-hatch-item.huge-result.v41-card-enter,
+.multi-hatch-item.titanic-result.v41-card-enter{
+  animation:v41RareCardEnter .72s cubic-bezier(.1,1.38,.2,1) forwards!important;
+}
+
+/* subtle screen punch at reveal */
+.hatch.v41-impact .hatch-inner{animation:v41ScreenPunch .38s linear}
+
+/* Keyframes */
+@keyframes v41StageFloat{
+  0%,100%{transform:translateY(2px)}
+  50%{transform:translateY(-12px)}
+}
+@keyframes v41EggCharge{
+  0%,100%{transform:translateY(0) scale(.96) rotate(-1.5deg)}
+  50%{transform:translateY(-7px) scale(1.045) rotate(1.5deg)}
+}
+@keyframes v41AuraCharge{
+  0%,100%{opacity:.34;transform:scale(.9)}
+  50%{opacity:.78;transform:scale(1.15)}
+}
+@keyframes v41RingCharge{
+  0%{opacity:.72;transform:scale(.72)}
+  100%{opacity:0;transform:scale(1.38)}
+}
+@keyframes v41StageShake1{
+  0%,100%{transform:translate(0,-4px) rotate(0)}
+  25%{transform:translate(-5px,-5px) rotate(-1.5deg)}
+  75%{transform:translate(5px,-3px) rotate(1.5deg)}
+}
+@keyframes v41StageShake2{
+  0%,100%{transform:translate(0,-3px) rotate(0)}
+  25%{transform:translate(-8px,-4px) rotate(-2.8deg)}
+  50%{transform:translate(6px,-2px) rotate(2deg)}
+  75%{transform:translate(-4px,-5px) rotate(-1.5deg)}
+}
+@keyframes v41Whiteout{
+  0%{opacity:0}
+  12%{opacity:1}
+  100%{opacity:0}
+}
+@keyframes v41ImpactWave{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(.18)}
+  100%{opacity:0;transform:translate(-50%,-50%) scale(6.4)}
+}
+@keyframes v41ShardFly{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(.5) rotate(0deg)}
+  100%{opacity:0;transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(1.08) rotate(var(--sr))}
+}
+@keyframes v41StarFly{
+  0%{opacity:1;transform:translate(-50%,-50%) scale(.3)}
+  55%{opacity:1}
+  100%{opacity:0;transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(1.4)}
+}
+@keyframes v41PetLaunch{
+  0%{opacity:0;transform:translateY(130px) scale(.55) rotate(-9deg)}
+  62%{opacity:1;transform:translateY(-18px) scale(1.12) rotate(3deg)}
+  82%{transform:translateY(7px) scale(.97) rotate(-1deg)}
+  100%{opacity:1;transform:translateY(0) scale(1) rotate(0)}
+}
+@keyframes v41NameLand{
+  0%{opacity:0;transform:translateY(28px) scale(.72)}
+  70%{opacity:1;transform:translateY(-4px) scale(1.08)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+@keyframes v41PowerIn{
+  0%{opacity:0;transform:translateY(15px) scale(.85)}
+  100%{opacity:1;transform:none}
+}
+@keyframes v41RarityIn{
+  0%{opacity:0;letter-spacing:.55em;transform:translateY(-12px)}
+  100%{opacity:1;letter-spacing:.2em;transform:none}
+}
+@keyframes v41BannerPunch{
+  0%{opacity:0;transform:translate(-50%,-30px) scale(.35) rotate(-5deg)}
+  60%{opacity:1;transform:translate(-50%,4px) scale(1.13) rotate(1deg)}
+  100%{opacity:1;transform:translate(-50%,0) scale(1) rotate(0)}
+}
+@keyframes v41CardEnter{
+  0%{opacity:0;transform:translateY(42px) scale(.78) rotate(-2deg)}
+  70%{opacity:1;transform:translateY(-5px) scale(1.04) rotate(.5deg)}
+  100%{opacity:1;transform:none}
+}
+@keyframes v41RareCardEnter{
+  0%{opacity:0;transform:translateY(55px) scale(.62) rotate(-4deg)}
+  62%{opacity:1;transform:translateY(-10px) scale(1.11) rotate(1.5deg)}
+  100%{opacity:1;transform:none}
+}
+@keyframes v41SummaryIn{
+  0%{opacity:0;transform:translateY(-15px) scale(.9)}
+  100%{opacity:1;transform:none}
+}
+@keyframes v41ScreenPunch{
+  0%,100%{transform:translate(0)}
+  20%{transform:translate(-7px,3px)}
+  40%{transform:translate(7px,-3px)}
+  60%{transform:translate(-4px,-2px)}
+  80%{transform:translate(3px,2px)}
+}
+
+@media(max-width:560px){
+  .v41-shard{width:28px;height:36px}
+  .hatch.revealed .hatch-name{font-size:28px!important}
+  .hatch.revealed.rarity-Huge .hatch-name{font-size:34px!important}
+  .hatch.revealed.rarity-Titanic .hatch-name{font-size:38px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .v41-hatch-fx,.hatch.v41-charge .hatch-stage,.hatch.v41-charge .hatch-egg{animation:none!important}
+}
