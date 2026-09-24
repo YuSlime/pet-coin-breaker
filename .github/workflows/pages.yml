@@ -325,6 +325,9 @@ jobs:
         run: |
           python3 -c "from pathlib import Path; p=Path('public/index.html'); h=p.read_text(encoding='utf-8'); h=h.replace('</style>', Path('patches/v39.css').read_text(encoding='utf-8')+'\n</style>', 1); h=h.replace('</body>', '<script>'+Path('patches/v39.js').read_text(encoding='utf-8')+'</script>\n</body>', 1); p.write_text(h, encoding='utf-8'); Path('public/pages-version.json').write_text('{\"version\":39,\"patch\":\"boss-reload-pet-ui-hatch-effects\"}', encoding='utf-8')"
 
+      - name: Apply Version 40 poko break sound
+        run: python3 patches/apply_v40.py
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
