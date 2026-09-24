@@ -1,0 +1,17 @@
+/* Version 3: Huge is a rarity, never a size modifier */
+.rarity-Huge{color:#ffcf63!important}
+.pet-model.rarity-Huge{--pg:#ffcf63}
+.pet-card.rarity-card-Huge{background:radial-gradient(circle at 50% 25%,rgba(255,204,74,.24),#1a2135 70%);box-shadow:inset 0 0 24px rgba(255,211,95,.08)}
+.pet-card.huge-card .pet-visual-wrap{height:91px!important;margin-top:3px!important;margin-bottom:0!important}
+.pet-card.huge-card .pet-model{transform:none!important}
+.pet-orb .pet-model.huge{transform:scale(.6)!important}
+.multi-hatch-item.huge-result .mini-pet{height:78px!important}
+.multi-hatch-item.huge-result .pet-model.huge{transform:scale(.72)!important}
+.hatch-pet .pet-model.huge{transform:scale(2.1)!important}
+.hatch.rarity-Huge{--rc:#ffd45f}
+.hatch.rarity-Huge.show .beam{opacity:.4}
+.hatch.revealed.rarity-Huge .rarity-banner{animation:bannerDrop .55s .08s cubic-bezier(.2,1.4,.3,1) forwards}
+.hatch.rarity-Huge::after{content:"";position:absolute;inset:-25%;background:repeating-conic-gradient(from 0deg,rgba(255,219,75,.14) 0 4deg,transparent 4deg 13deg);opacity:0}
+.hatch.revealed.rarity-Huge::after{animation:legendRays 4s linear infinite;opacity:1}
+.hatch.revealed.rarity-Huge .hatch-pet .pet-model{animation:legendPetEnter .75s cubic-bezier(.15,1.4,.28,1) both!important}
+@media(max-width:560px){.multi-hatch-item.huge-result .mini-pet{height:78px!important}.multi-hatch-item.huge-result .pet-model.huge{transform:scale(.62)!important}}
