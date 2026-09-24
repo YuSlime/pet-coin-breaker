@@ -285,6 +285,10 @@ jobs:
       - name: Apply Version 20 boss chest
         run: python3 patches/apply_v20.py
 
+      - name: Apply Version 21 fixed boss chest
+        run: |
+          python3 -c "from pathlib import Path; p=Path('public/index.html'); h=p.read_text(encoding='utf-8'); h=h.replace('</style>', Path('patches/v21.css').read_text(encoding='utf-8')+'\n</style>', 1); p.write_text(h, encoding='utf-8'); Path('public/pages-version.json').write_text('{\"version\":21,\"patch\":\"fixed-boss-chest-position\"}', encoding='utf-8')"
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
