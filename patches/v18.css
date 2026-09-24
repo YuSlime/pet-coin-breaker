@@ -1,0 +1,23 @@
+/* Version 18: wider spacing between attacking pets */
+.pets-field{
+  gap:28px 52px!important;
+}
+.pet-orb{
+  flex:0 0 86px!important;
+}
+@media(max-width:800px){
+  .pets-field{
+    gap:18px 28px!important;
+  }
+  .pet-orb{
+    flex:0 0 74px!important;
+  }
+}
+@media(max-width:430px){
+  .pets-field{
+    gap:14px 18px!important;
+  }
+  .pet-orb{
+    flex:0 0 66px!important;
+  }
+}
