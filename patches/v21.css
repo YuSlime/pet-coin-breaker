@@ -1,0 +1,16 @@
+/* Version 21: keep Boss Chest fixed on the normal coin position until defeated */
+.coin-target.v20-boss-chest,
+.coin-target.v20-boss-chest.hit,
+.coin-target.v20-boss-chest.pulse,
+.coin-target.v20-boss-chest.breaking{
+  animation:none!important;
+  transform:none!important;
+  transition:none!important;
+}
+.coin-target.v20-boss-chest::before,
+.coin-target.v20-boss-chest::after{
+  animation:none!important;
+}
+.v20-boss-active .coin-wrap{
+  transform:none!important;
+}
