@@ -334,6 +334,12 @@ jobs:
       - name: Apply Version 42 admin area sync
         run: python3 patches/apply_v42.py
 
+      - name: Apply Version 43 cinematic hatch overhaul
+        run: python3 patches/apply_v43.py
+
+      - name: Validate Version 43 hatch overhaul
+        run: python3 patches/validate_v43.py public/index.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
