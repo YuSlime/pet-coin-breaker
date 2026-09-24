@@ -30,12 +30,16 @@
     const ready=!!boss.ready&&!boss.active;
     if(ready===lastReady)return;
     lastReady=ready;
+
     btn.classList.toggle('ready',ready);
     btn.disabled=!ready;
+    btn.hidden=!ready;
+    btn.style.display=ready?'inline-flex':'none';
     btn.setAttribute('aria-hidden',ready?'false':'true');
   }
 
   window.v23SyncBossChallenge=sync;
+  window.addEventListener('storage',sync);
   setInterval(sync,500);
   sync();
 })();
