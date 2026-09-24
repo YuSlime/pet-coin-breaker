@@ -1,0 +1,10 @@
+/* Version 4: restore Huge visual scale while keeping Huge as rarity */
+.pet-card.huge-card .pet-visual-wrap{height:165px!important;margin-top:10px!important;margin-bottom:6px!important}
+.pet-card.huge-card .pet-model{transform:scale(1.9)!important}
+.pet-orb .pet-model.huge{transform:scale(1.45)!important}
+.multi-hatch-item.huge-result .mini-pet{height:130px!important}
+.multi-hatch-item.huge-result .pet-model.huge{transform:scale(1.45)!important}
+.hatch-pet .pet-model.huge{transform:scale(5)!important}
+@keyframes hugePetEnter{0%{transform:scale(.7) rotate(-14deg);filter:brightness(4.2) blur(8px)}68%{transform:scale(5.45) rotate(4deg)}100%{transform:scale(5) rotate(0)}}
+.hatch.revealed.rarity-Huge .hatch-pet .pet-model{animation:hugePetEnter .82s cubic-bezier(.15,1.4,.28,1) both!important}
+@media(max-width:560px){.multi-hatch-item.huge-result .mini-pet{height:108px!important}.multi-hatch-item.huge-result .pet-model.huge{transform:scale(1.2)!important}}
