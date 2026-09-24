@@ -279,7 +279,7 @@
     document.querySelector('#v15-boss').innerHTML=
       '<div class="v15-card">'+
       '<h3>👑 巨大宝箱ボス</h3>'+
-      '<div class="v15-small">通常ターゲットを20個壊すとREADY。自動では始まらず、ここから手動で開始します。撃破で大量コイン + ランダムBoost 5分。</div>'+
+      '<div class="v15-small">通常ターゲットを20個壊すとREADY。自動では始まらず、ここから手動で開始します。撃破で大量コイン + ランダムBoost 5分。<br><b>🐲 Huge Boss Dragon：0.5%</b></div>'+
       body+
       '</div>';
   }
