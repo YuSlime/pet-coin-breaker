@@ -328,6 +328,9 @@ jobs:
       - name: Apply Version 40 poko break sound
         run: python3 patches/apply_v40.py
 
+      - name: Apply Version 41 full hatch FX
+        run: python3 patches/apply_v41.py
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
