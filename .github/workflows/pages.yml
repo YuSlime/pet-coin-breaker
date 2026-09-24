@@ -180,6 +180,22 @@ jobs:
           print("Version 11 patch applied:", page.stat().st_size, "bytes")
           PY
 
+      - name: Apply Version 12 hidden admin
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("public/index.html")
+          html = page.read_text(encoding="utf-8")
+          css = Path("patches/v12.css").read_text(encoding="utf-8")
+          js = Path("patches/v12.js").read_text(encoding="utf-8")
+          html = html.replace("</style>", css + "\n</style>", 1)
+          html = html.replace("</body>", "<script>\n" + js + "\n</script>\n</body>", 1)
+          page.write_text(html, encoding="utf-8")
+          Path("public/pages-version.json").write_text('{"version":12,"patch":"hidden-admin"}', encoding="utf-8")
+          print("Version 12 patch applied:", page.stat().st_size, "bytes")
+          PY
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
