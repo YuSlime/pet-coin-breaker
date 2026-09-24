@@ -80,8 +80,20 @@ jobs:
           css = Path("patches/v4.css").read_text(encoding="utf-8")
           html = html.replace("</style>", css + "\n</style>", 1)
           page.write_text(html, encoding="utf-8")
-          Path("public/pages-version.json").write_text('{"version":4,"patch":"huge-rarity-5x-visuals"}', encoding="utf-8")
-          print("Version 4 patch applied:", page.stat().st_size, "bytes")
+          PY
+
+      - name: Apply Version 5 tougher coins
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          page = Path("public/index.html")
+          html = page.read_text(encoding="utf-8")
+          js = Path("patches/v5.js").read_text(encoding="utf-8")
+          html = html.replace("</body>", "<script>\n" + js + "\n</script>\n</body>", 1)
+          page.write_text(html, encoding="utf-8")
+          Path("public/pages-version.json").write_text('{"version":5,"patch":"tougher-coins"}', encoding="utf-8")
+          print("Version 5 patch applied:", page.stat().st_size, "bytes")
           PY
 
       - name: Upload Pages artifact
