@@ -354,6 +354,12 @@ jobs:
           python3 patches/validate_v45.py public/index.html
           node --check patches/v45.js
 
+      - name: Apply Version 46 luxury egg icons
+        run: python3 patches/apply_v46.py
+
+      - name: Validate Version 46 luxury egg icons
+        run: python3 patches/validate_v46.py public/index.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
