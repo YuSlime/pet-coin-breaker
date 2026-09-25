@@ -1,0 +1,24 @@
+/* Version 50: normal pet card alignment fix */
+.pet-card .pet-visual-wrap{
+  position:relative!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+.pet-card:not(.huge-card):not(.titanic-card) .pet-visual-wrap > .pet-model{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  margin:0!important;
+  transform-origin:center center!important;
+  transform:translate(-50%,-50%) scale(.98)!important;
+}
+.pet-card:not(.huge-card):not(.titanic-card) .pet-visual-wrap > .pet-model .pet-shadow{
+  bottom:6px!important;
+}
+@media(max-width:560px){
+  .pet-card:not(.huge-card):not(.titanic-card) .pet-visual-wrap > .pet-model{
+    transform:translate(-50%,-50%) scale(.90)!important;
+  }
+}
