@@ -1,0 +1,79 @@
+/* Version 49: pet shapes + egg-name motifs */
+.v49-shape-pack .v49-tail,.v49-shape-pack .v49-tail-tip,.v49-shape-pack .v49-halo,.v49-shape-pack .v49-orbit,.v49-shape-pack .pet-sidehorn,.v49-shape-pack .v49-motif{position:absolute;pointer-events:none;display:none}
+.v49-shape-pack .v49-tail{right:-9px;bottom:10px;width:28px;height:20px;z-index:0;background:linear-gradient(145deg,var(--pc1),var(--pc2));border-radius:70% 30% 70% 30%;transform:rotate(22deg);box-shadow:inset 3px 3px 0 rgba(255,255,255,.15),0 0 0 2px rgba(255,255,255,.1)}
+.v49-shape-pack .v49-tail-tip{right:-3px;bottom:23px;width:10px;height:10px;z-index:1;border-radius:50%;background:var(--pc3);box-shadow:0 0 8px var(--pg)}
+.v49-shape-pack .v49-halo{left:50%;top:-16px;width:42px;height:13px;transform:translateX(-50%);border:3px solid rgba(255,255,255,.82);border-radius:50%;box-shadow:0 0 14px rgba(255,255,255,.5)}
+.v49-shape-pack .v49-orbit{left:50%;top:50%;width:72px;height:30px;transform:translate(-50%,-50%) rotate(-10deg);border:2px solid rgba(255,255,255,.34);border-radius:50%}
+.v49-shape-pack .v49-orbit.o2{transform:translate(-50%,-50%) rotate(26deg) scale(.82);opacity:.62}
+.v49-shape-pack .pet-sidehorn{top:-5px;width:13px;height:19px;z-index:3;background:linear-gradient(#fff,var(--pc3));clip-path:polygon(50% 0,100% 100%,0 100%)}
+.v49-shape-pack .pet-sidehorn.l{left:9px;transform:rotate(-25deg)}.v49-shape-pack .pet-sidehorn.r{right:9px;transform:rotate(25deg)}
+.v49-shape-pack .v49-motif{left:50%;top:7px;width:15px;height:15px;z-index:4;transform:translateX(-50%)}
+.v49-shape-pack.kind-dog .v49-tail,.v49-shape-pack.kind-cat .v49-tail,.v49-shape-pack.kind-rabbit .v49-tail,.v49-shape-pack.kind-fox .v49-tail,.v49-shape-pack.kind-unicorn .v49-tail,.v49-shape-pack.kind-dragon .v49-tail{display:block}
+.v49-shape-pack.kind-dog .v49-tail-tip,.v49-shape-pack.kind-cat .v49-tail-tip,.v49-shape-pack.kind-fox .v49-tail-tip,.v49-shape-pack.kind-unicorn .v49-tail-tip,.v49-shape-pack.kind-dragon .v49-tail-tip{display:block}
+.v49-shape-pack.kind-rabbit .v49-tail{width:18px;height:18px;right:-3px;bottom:13px;border-radius:50%;transform:none}.v49-shape-pack.kind-rabbit .v49-tail-tip{display:none}
+.v49-shape-pack.kind-cat .v49-tail{width:22px;height:29px;right:-9px;bottom:10px;border-radius:76% 24% 80% 30%;transform:rotate(38deg)}
+.v49-shape-pack.kind-fox .v49-tail{width:34px;height:18px;right:-14px;bottom:14px;border-radius:25% 75% 75% 25%;transform:rotate(18deg)}
+.v49-shape-pack.kind-unicorn .v49-tail{width:23px;height:27px;right:-9px;bottom:11px}.v49-shape-pack.kind-unicorn .v49-tail-tip{background:linear-gradient(#fff,#ffd6f5,#9eeeff)}
+.v49-shape-pack.kind-dragon .v49-tail{width:33px;height:19px;right:-14px;bottom:11px;border-radius:25% 75% 75% 20%}.v49-shape-pack.kind-dragon .v49-tail-tip{border-radius:0;clip-path:polygon(50% 0,100% 100%,0 100%)}
+
+/* 草原の卵: leaves / flowers / clover / forest */
+.skin-grassdog .pet-body{border-radius:56% 44% 36% 34%!important}.skin-grassdog .v49-tail{clip-path:polygon(0 55%,35% 8%,70% 8%,100% 55%,68% 100%,28% 95%)}.skin-grassdog .v49-motif{display:block;background:#eaffcf;clip-path:polygon(50% 0,62% 35%,100% 50%,62% 65%,50% 100%,38% 65%,0 50%,38% 35%)}
+.skin-grasscat .pet-body{border-radius:44% 44% 27% 27%!important}.skin-grasscat .pet-ear{height:31px!important}.skin-grasscat .v49-motif{display:block;background:#a8ff9b;clip-path:polygon(50% 0,70% 35%,100% 45%,70% 60%,50% 100%,30% 60%,0 45%,30% 35%)}
+.skin-cloverrabbit .pet-ear{height:50px!important;clip-path:polygon(50% 0,76% 22%,100% 48%,78% 100%,50% 80%,22% 100%,0 48%,24% 22%)!important}.skin-cloverrabbit .v49-tail{background:radial-gradient(circle,#f1ffc0 0 42%,#60bb55 43%)}.skin-cloverrabbit .v49-motif{display:block;background:#baff77;clip-path:polygon(50% 45%,28% 0,0 24%,28% 52%,0 76%,40% 70%,50% 100%,60% 70%,100% 76%,72% 52%,100% 24%,72% 0)}
+.skin-forestfox .pet-body{clip-path:polygon(15% 8%,85% 8%,100% 34%,85% 94%,50% 100%,15% 94%,0 34%)!important}.skin-forestfox .v49-tail{clip-path:polygon(0 55%,18% 14%,76% 0,100% 34%,82% 100%,22% 88%)}.skin-forestfox .v49-motif{display:block;background:#d5ffc5;clip-path:polygon(0 50%,55% 0,100% 18%,72% 100%)}
+.skin-flowerunicorn .v49-halo{display:block;border-color:#ffc5e8}.skin-flowerunicorn .v49-motif{display:block;border-radius:50%;background:radial-gradient(circle,#fff 0 20%,#ffadd5 21% 62%,#b871e9 63%)}
+.skin-forestdragon .pet-sidehorn{display:block;background:linear-gradient(#f5ffe6,#7edc86)}.skin-forestdragon .pet-wing{display:block!important;clip-path:polygon(0 70%,30% 10%,100% 0,78% 100%)!important}.skin-forestdragon .v49-motif{display:block;background:#caffbf;clip-path:polygon(50% 0,100% 100%,0 100%)}
+
+/* 砂漠の卵: dunes / sun / ruins / sandstorm */
+.skin-sandjackal .pet-body{border-radius:34% 34% 44% 44%!important}.skin-sandjackal .v49-tail{clip-path:polygon(0 60%,34% 18%,94% 0,84% 75%,36% 100%)}.skin-sandjackal .v49-motif{display:block;background:#ffe1a0;clip-path:polygon(0 80%,18% 48%,40% 70%,65% 22%,100% 80%)}
+.skin-sphinxcat .pet-body{clip-path:polygon(14% 16%,86% 16%,100% 40%,82% 90%,50% 100%,18% 90%,0 40%)!important}.skin-sphinxcat .pet-ear{height:18px!important}.skin-sphinxcat .v49-motif{display:block;border:2px solid #f9df9a;border-radius:50%;box-sizing:border-box}
+.skin-sandbunny .pet-body{clip-path:polygon(18% 6%,82% 6%,100% 30%,88% 92%,50% 100%,12% 92%,0 30%)!important}.skin-sandbunny .pet-ear{clip-path:polygon(50% 0,100% 32%,78% 100%,22% 100%,0 32%)!important}
+.skin-fennec .pet-ear{width:34px!important;height:40px!important;top:-25px!important}.skin-fennec .v49-tail{width:36px;height:18px;clip-path:polygon(0 60%,18% 12%,100% 0,84% 100%,20% 84%)}
+.skin-sununicorn .v49-halo{display:block;border-color:#ffe06c;box-shadow:0 0 15px #ffd45f99}.skin-sununicorn .v49-motif{display:block;border-radius:50%;background:radial-gradient(circle,#fff7bf 0 35%,#ffcc43 36% 58%,transparent 59%);box-shadow:0 0 8px #ffd35e}
+.skin-sandstormdragon .v49-orbit{display:block;border-style:dashed;border-color:#ffe3aa99}.skin-sandstormdragon .pet-wing{display:block!important;clip-path:polygon(0 72%,28% 8%,100% 0,78% 100%)!important}.skin-sandstormdragon .v49-motif{display:block;border:3px solid #ffe2a4;border-left-color:transparent;border-radius:50%}
+
+/* 氷の卵: crystals / snow / frost */
+.skin-snowwolf .pet-body{clip-path:polygon(8% 17%,24% 4%,50% 11%,76% 4%,92% 17%,100% 66%,78% 96%,50% 100%,22% 96%,0 66%)!important}.skin-snowwolf .v49-tail{clip-path:polygon(0 62%,20% 10%,88% 0,100% 36%,74% 100%,20% 88%);background:linear-gradient(#efffff,#75c7ed)}
+.skin-icecat .pet-body{clip-path:polygon(14% 6%,86% 6%,100% 28%,91% 82%,67% 100%,22% 95%,0 67%,4% 26%)!important}.skin-icecat .v49-motif{display:block;background:#bdf5ff;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}
+.skin-snowbunny .pet-ear{height:50px!important;background:linear-gradient(#fff,#b1efff)!important}.skin-snowbunny .v49-tail{background:radial-gradient(circle,#fff 0 40%,#8bdcff 41%)}
+.skin-frostfox .v49-tail{width:35px;height:17px;clip-path:polygon(0 60%,22% 10%,100% 2%,84% 100%,22% 86%);background:linear-gradient(#f7ffff,#7ad4ff)}.skin-frostfox .v49-motif{display:block;background:#d8fbff;clip-path:polygon(50% 0,62% 37%,100% 50%,62% 63%,50% 100%,38% 63%,0 50%,38% 37%)}
+.skin-crystalunicorn .pet-sidehorn{display:block;background:linear-gradient(#fff,#7de9ff)}.skin-crystalunicorn .pet-horn{height:38px!important;width:14px!important}.skin-crystalunicorn .v49-motif{display:block;background:#eaffff;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);box-shadow:0 0 10px #8cefff}
+.skin-frostdragon .pet-wing{display:block!important;background:linear-gradient(#f3ffff,#70b6ea)!important;clip-path:polygon(0 74%,26% 10%,100% 0,80% 100%)!important}.skin-frostdragon .pet-sidehorn{display:block;background:linear-gradient(#fff,#a1e8ff)}
+
+/* 火山の卵: fire / magma / inferno */
+.skin-hellhound .pet-body{clip-path:polygon(14% 8%,86% 8%,100% 34%,86% 94%,50% 100%,14% 94%,0 34%)!important}.skin-hellhound .pet-sidehorn{display:block;background:linear-gradient(#ffd8b6,#ff7f52)}.skin-hellhound .v49-tail{clip-path:polygon(0 65%,25% 18%,72% 0,100% 42%,74% 72%,100% 100%,42% 85%);background:linear-gradient(#ffc57d,#7e2117)}
+.skin-magmacat .pet-body{border-radius:46% 46% 28% 28%!important}.skin-magmacat .v49-motif{display:block;background:#ffce70;clip-path:polygon(50% 0,100% 55%,76% 100%,24% 100%,0 55%);box-shadow:0 0 9px #ff5b26}
+.skin-emberbunny .pet-ear{clip-path:polygon(50% 0,72% 20%,100% 70%,50% 100%,0 70%,28% 20%)!important;background:linear-gradient(#ffe5aa,#ff8d52)!important}
+.skin-flamefox .v49-tail{width:35px;height:22px;clip-path:polygon(0 62%,15% 24%,50% 0,85% 18%,100% 58%,68% 100%,24% 80%);background:linear-gradient(#fff0a8,#ff7f2e,#a92918)}.skin-flamefox .v49-motif{display:block;background:#ffaf57;clip-path:polygon(50% 0,80% 45%,65% 100%,50% 70%,35% 100%,20% 45%)}
+.skin-infernounicorn .v49-halo{display:block;border-color:#ffae70;box-shadow:0 0 15px #ff744f88}.skin-infernounicorn .pet-horn{background:linear-gradient(#fff1c4,#ff9953 50%,#ff4929)!important}
+.skin-magmadragon .pet-sidehorn{display:block;background:linear-gradient(#fff1ad,#ff8738)}.skin-magmadragon .pet-wing{display:block!important;background:linear-gradient(#ffcc7d,#a82b18)!important;clip-path:polygon(0 76%,24% 12%,100% 0,78% 100%)!important}
+
+/* 天空の卵: clouds / wind / angel / celestial */
+.skin-cloudpuppy .pet-body{border-radius:54% 54% 44% 44%!important}.skin-cloudpuppy .v49-tail{width:22px;height:22px;right:-2px;bottom:13px;border-radius:50%;background:radial-gradient(circle,#fff 0 35%,#c9f2ff 36%)}.skin-cloudpuppy .v49-motif{display:block;border-radius:50%;background:#fff;box-shadow:8px 1px 0 #e7fbff,-6px 2px 0 #e7fbff}
+.skin-skycat .pet-body{clip-path:polygon(10% 10%,90% 10%,100% 30%,90% 88%,50% 100%,10% 88%,0 30%)!important}.skin-skycat .v49-tail{clip-path:polygon(0 62%,24% 0,100% 18%,78% 100%,18% 82%);background:linear-gradient(#effdff,#67caf5)}
+.skin-angelbunny .pet-ear{height:52px!important;clip-path:polygon(50% 0,82% 28%,100% 72%,66% 100%,34% 100%,0 72%,18% 28%)!important}.skin-angelbunny .v49-halo{display:block}
+.skin-windfox .v49-tail{width:36px;height:16px;clip-path:polygon(0 60%,18% 24%,52% 0,100% 8%,84% 56%,100% 100%,40% 78%);background:linear-gradient(#f2ffff,#81dffc)}.skin-windfox .v49-orbit{display:block;width:76px;height:24px;border-style:dashed}
+.skin-celestialunicorn .v49-halo{display:block;border-color:#fff0b6}.skin-celestialunicorn .v49-motif{display:block;background:#fff;clip-path:polygon(50% 0,60% 38%,100% 50%,60% 62%,50% 100%,40% 62%,0 50%,40% 38%);box-shadow:0 0 10px #c7baff}
+.skin-heavendragon .v49-halo{display:block;border-color:#ffe6a3}.skin-heavendragon .pet-wing{display:block!important;background:linear-gradient(#fffde9,#cfe8ff)!important;clip-path:polygon(0 76%,18% 22%,100% 0,84% 100%)!important}
+
+/* 宇宙の卵: stars / nebula / galaxy / nova */
+.skin-starwolf .v49-motif{display:block;background:#fff;clip-path:polygon(50% 0,61% 36%,100% 50%,61% 64%,50% 100%,39% 64%,0 50%,39% 36%);box-shadow:0 0 10px #b9c4ff}.skin-starwolf .v49-orbit{display:block;border-color:#b9c4ff66}
+.skin-cosmocat .pet-body{clip-path:ellipse(46% 48% at 50% 52%)!important}.skin-cosmocat .v49-orbit{display:block;border-color:#d7dfff77}.skin-cosmocat .v49-orbit.o2{display:block}
+.skin-nebulabunny .pet-body{border-radius:56% 56% 46% 46%!important}.skin-nebulabunny .pet-ear{height:50px!important;background:linear-gradient(#ffd8f8,#9f8bff)!important}.skin-nebulabunny .v49-motif{display:block;border-radius:50%;background:radial-gradient(circle,#fff 0 15%,#ffb9ef 16% 44%,#8674dc 45% 100%)}
+.skin-galaxyfox .v49-tail{width:36px;height:18px;clip-path:polygon(0 60%,18% 10%,100% 0,82% 100%,20% 82%);background:linear-gradient(#8cc4ff,#ff9ee7 68%,#381760)}.skin-galaxyfox .v49-orbit{display:block;border-color:#ffb1f466}
+.skin-novaunicorn .v49-halo{display:block;border-color:#ffd8a8;box-shadow:0 0 18px #ff8660aa}.skin-novaunicorn .pet-sidehorn{display:block;background:linear-gradient(#fff3cd,#ff9b68)}.skin-novaunicorn .v49-motif{display:block;border-radius:50%;background:radial-gradient(circle,#fff 0 28%,#ffc166 29% 50%,#ff6b66 51%);box-shadow:0 0 12px #ff855f}
+.skin-cosmicdragon .v49-orbit,.skin-cosmicdragon .v49-orbit.o2{display:block;border-color:#d6caff66}.skin-cosmicdragon .pet-wing{display:block!important;background:linear-gradient(#e9efff,#5962b7)!important}
+
+/* 深淵の卵: void / shadow / nightmare / eclipse / abyss */
+.skin-voidcat .pet-body{clip-path:ellipse(45% 48% at 50% 52%)!important}.skin-voidcat .v49-orbit{display:block;border-color:#8e7cff55}.skin-voidcat .v49-motif{display:block;border-radius:50%;border:3px solid #c0b4ff;border-right-color:transparent;box-sizing:border-box}
+.skin-shadowbunny .pet-body{border-radius:50% 50% 46% 46%!important}.skin-shadowbunny .pet-ear{height:50px!important;background:linear-gradient(#917eb2,#1a1220)!important}.skin-shadowbunny .v49-motif{display:block;background:#16101e;clip-path:polygon(50% 0,100% 100%,50% 76%,0 100%)}
+.skin-nightmarefox .v49-tail{background:linear-gradient(#ff6ab4,#2b142e);clip-path:polygon(0 64%,18% 18%,64% 0,100% 32%,72% 70%,100% 100%,36% 84%)}.skin-nightmarefox .pet-sidehorn{display:block;background:linear-gradient(#ffb5d9,#7f224c)}
+.skin-eclipseunicorn .v49-halo{display:block;border-color:#ffdda0}.skin-eclipseunicorn .v49-orbit{display:block;width:50px;height:18px;border-color:#ffdda055}.skin-eclipseunicorn .v49-motif{display:block;border-radius:50%;background:linear-gradient(90deg,#ffe0a8 0 49%,#2a1e37 50% 100%)}
+.skin-abysshound .pet-sidehorn{display:block;background:linear-gradient(#f0d6ff,#8f43ba)}.skin-abysshound .v49-motif{display:block;background:#d780ff;clip-path:polygon(50% 0,100% 100%,50% 72%,0 100%);box-shadow:0 0 10px #d142ff}
+.skin-abyssdragon .pet-sidehorn{display:block;background:linear-gradient(#ffd6ff,#a64292)}.skin-abyssdragon .pet-wing{display:block!important;background:linear-gradient(#f0c0ff,#54204f)!important;clip-path:polygon(0 78%,18% 12%,100% 0,80% 100%)!important}.skin-abyssdragon .v49-orbit{display:block;border-color:#e36bff55}
+
+/* Boss Dragon */
+.skin-bossdragon .pet-sidehorn{display:block;background:linear-gradient(#fff0b8,#ff9b58)}.skin-bossdragon .pet-wing{display:block!important;background:linear-gradient(#ffd376,#b22b18)!important}.skin-bossdragon .v49-halo{display:block;border-color:#ffd36f;box-shadow:0 0 18px #ffb44d77}.skin-bossdragon .v49-motif{display:block;background:#ffd767;clip-path:polygon(0 80%,15% 24%,35% 61%,50% 0,65% 61%,85% 24%,100% 80%,84% 100%,16% 100%)}
+
+@media(max-width:560px){.v49-shape-pack .v49-orbit{width:62px}.v49-shape-pack .v49-halo{width:36px}}
+@media(prefers-reduced-motion:reduce){.v49-shape-pack .v49-orbit,.v49-shape-pack .v49-halo{animation:none!important}}
