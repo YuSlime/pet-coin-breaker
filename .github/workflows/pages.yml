@@ -368,6 +368,14 @@ jobs:
           python3 patches/validate_v47.py public/index.html
           node --check patches/v47.js
 
+      - name: Apply Version 48 unique pet faces
+        run: python3 patches/apply_v48.py
+
+      - name: Validate Version 48 unique pet faces
+        run: |
+          python3 patches/validate_v48.py public/index.html
+          node --check patches/v48.js
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
