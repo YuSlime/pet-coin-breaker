@@ -360,6 +360,14 @@ jobs:
       - name: Validate Version 46 luxury egg icons
         run: python3 patches/validate_v46.py public/index.html
 
+      - name: Apply Version 47 luxury coin icons
+        run: python3 patches/apply_v47.py
+
+      - name: Validate Version 47 luxury coin icons
+        run: |
+          python3 patches/validate_v47.py public/index.html
+          node --check patches/v47.js
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
