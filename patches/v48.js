@@ -37,3 +37,4 @@
   window.v48FaceMap=FACE_BY_SKIN;
   if(typeof renderAll==='function')renderAll();
 })();
+/* Version 48 final deployment marker */
