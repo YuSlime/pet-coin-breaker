@@ -1,0 +1,77 @@
+/* Version 46: luxury in-game egg icons */
+.lux-egg{
+  --egg1:#9be66f;--egg2:#3fbf64;--egg3:#eaffd8;--eggGem:#b7ff8c;--eggMetal:#f4d36b;--eggMetal2:#a96f1c;
+  position:relative;display:inline-block;width:74px;height:92px;flex:0 0 auto;
+  filter:drop-shadow(0 10px 12px rgba(0,0,0,.32)) drop-shadow(0 0 14px color-mix(in srgb,var(--eggGem) 26%,transparent));
+  transform-origin:50% 70%;
+}
+.lux-egg-shell{
+  position:absolute;inset:3px 7px 5px;border-radius:52% 52% 47% 47%/62% 62% 40% 40%;
+  background:
+    radial-gradient(circle at 32% 22%,rgba(255,255,255,.95) 0 4%,transparent 11%),
+    radial-gradient(circle at 62% 38%,rgba(255,255,255,.22),transparent 16%),
+    linear-gradient(145deg,var(--egg3) 0 9%,var(--egg1) 29%,var(--egg2) 72%,color-mix(in srgb,var(--egg2) 72%,#000) 100%);
+  border:2px solid rgba(255,255,255,.75);
+  box-shadow:inset 8px 7px 13px rgba(255,255,255,.24),inset -9px -12px 16px rgba(0,0,0,.2),0 0 0 2px color-mix(in srgb,var(--eggMetal) 62%,#fff 18%);
+  overflow:hidden;
+}
+.lux-egg-shell::before{
+  content:"";position:absolute;inset:7% 11%;border-radius:inherit;
+  background:linear-gradient(115deg,transparent 0 22%,rgba(255,255,255,.36) 24% 28%,transparent 31% 58%,rgba(255,255,255,.18) 62% 66%,transparent 70%);
+  mix-blend-mode:screen;opacity:.75;
+}
+.lux-egg-shell::after{
+  content:"";position:absolute;left:9%;right:9%;top:47%;height:18%;
+  border-top:3px solid var(--eggMetal);border-bottom:2px solid color-mix(in srgb,var(--eggMetal2) 65%,#fff);
+  transform:skewY(-7deg);opacity:.92;
+  box-shadow:0 0 9px color-mix(in srgb,var(--eggMetal) 28%,transparent);
+}
+.lux-egg-crown{
+  position:absolute;left:50%;top:1px;width:34px;height:22px;transform:translateX(-50%);
+  background:linear-gradient(145deg,#fff3a8,var(--eggMetal) 45%,var(--eggMetal2));
+  clip-path:polygon(0 80%,15% 24%,35% 61%,50% 0,65% 61%,85% 24%,100% 80%,84% 100%,16% 100%);
+  filter:drop-shadow(0 3px 3px rgba(0,0,0,.28)) drop-shadow(0 0 7px color-mix(in srgb,var(--eggMetal) 42%,transparent));
+}
+.lux-egg-gem{
+  position:absolute;left:50%;top:39%;width:24px;height:30px;transform:translate(-50%,-50%) rotate(45deg);
+  border-radius:5px;background:linear-gradient(145deg,#fff 0 12%,var(--eggGem) 30%,color-mix(in srgb,var(--eggGem) 66%,#5d39ff) 72%,#fff 100%);
+  border:2px solid #fff8c9;box-shadow:0 0 14px var(--eggGem),inset 0 0 8px rgba(255,255,255,.55);
+}
+.lux-egg-gem::after{
+  content:"";position:absolute;inset:4px;border:1px solid rgba(255,255,255,.78);border-radius:3px;
+}
+.lux-egg-wing{position:absolute;top:49%;width:18px;height:31px;background:linear-gradient(145deg,#fff7b0,var(--eggMetal) 48%,var(--eggMetal2));filter:drop-shadow(0 2px 3px rgba(0,0,0,.24))}
+.lux-egg-wing.left{left:2px;clip-path:polygon(100% 0,62% 22%,12% 8%,42% 46%,0 62%,48% 70%,22% 100%,75% 82%,100% 100%)}
+.lux-egg-wing.right{right:2px;transform:scaleX(-1);clip-path:polygon(100% 0,62% 22%,12% 8%,42% 46%,0 62%,48% 70%,22% 100%,75% 82%,100% 100%)}
+.lux-egg-star{position:absolute;width:7px;height:7px;background:#fff;clip-path:polygon(50% 0,61% 38%,100% 50%,61% 62%,50% 100%,39% 62%,0 50%,39% 38%);filter:drop-shadow(0 0 5px var(--eggGem));animation:v46EggSpark 1.8s ease-in-out infinite}
+.lux-egg-star.s1{left:13px;top:25px}.lux-egg-star.s2{right:11px;top:29px;animation-delay:.6s}.lux-egg-star.s3{right:17px;bottom:16px;animation-delay:1.15s}
+.lux-egg-zone-0{--egg1:#95eb76;--egg2:#2e9d54;--egg3:#f0ffe4;--eggGem:#a7ff74;--eggMetal:#f2d56b;--eggMetal2:#9b6a18}
+.lux-egg-zone-1{--egg1:#ffd875;--egg2:#c27b22;--egg3:#fff3c7;--eggGem:#ffcf55;--eggMetal:#fff0a0;--eggMetal2:#b06012}
+.lux-egg-zone-2{--egg1:#a9ecff;--egg2:#4a9ee8;--egg3:#effdff;--eggGem:#7cecff;--eggMetal:#d9f8ff;--eggMetal2:#5ba5c2}
+.lux-egg-zone-3{--egg1:#ff9c5c;--egg2:#c93230;--egg3:#ffe4ba;--eggGem:#ff4f2f;--eggMetal:#ffcb62;--eggMetal2:#9a3719}
+.lux-egg-zone-4{--egg1:#f6f0ff;--egg2:#a987e6;--egg3:#ffffff;--eggGem:#d9c7ff;--eggMetal:#fff3b0;--eggMetal2:#a48338}
+.lux-egg-zone-5{--egg1:#57cfff;--egg2:#7046d7;--egg3:#ff9bef;--eggGem:#77f5ff;--eggMetal:#ffe072;--eggMetal2:#946420}
+.lux-egg-zone-6{--egg1:#7d5ab4;--egg2:#1b1635;--egg3:#c29bff;--eggGem:#d16cff;--eggMetal:#bf9cff;--eggMetal2:#5c3479}
+.lux-egg-zone-5 .lux-egg-shell{background:
+  radial-gradient(circle at 32% 22%,#fff 0 4%,transparent 11%),
+  radial-gradient(circle at 72% 27%,#ffb7f6 0 2%,transparent 3%),
+  radial-gradient(circle at 35% 65%,#72efff 0 2%,transparent 3%),
+  linear-gradient(145deg,var(--egg3),var(--egg1) 38%,var(--egg2) 78%,#1e1649);
+}
+.lux-egg-zone-6 .lux-egg-shell{box-shadow:inset 8px 7px 13px rgba(255,255,255,.18),inset -9px -12px 18px rgba(0,0,0,.42),0 0 0 2px color-mix(in srgb,var(--eggMetal) 58%,#fff 12%),0 0 22px rgba(139,69,255,.18)}
+.egg-icon.v46-egg-icon{font-size:0;width:92px;height:108px;display:grid;place-items:center}
+.egg-icon.v46-egg-icon .lux-egg{transform:scale(1.05);animation:v46EggFloat 2.2s ease-in-out infinite}
+.v46-egg-title{display:inline-flex;align-items:center;gap:8px}
+.v46-egg-title .lux-egg{width:27px;height:34px;filter:drop-shadow(0 3px 4px rgba(0,0,0,.3))}
+.v46-egg-title .lux-egg-shell{inset:2px 3px 2px;border-width:1px}.v46-egg-title .lux-egg-crown{width:15px;height:10px}.v46-egg-title .lux-egg-gem{width:9px;height:11px;border-width:1px}.v46-egg-title .lux-egg-wing,.v46-egg-title .lux-egg-star{display:none}
+.hatch-egg.hatch-egg-lux{font-size:0!important;width:210px;height:230px;display:grid;place-items:center;filter:none!important}
+.hatch-egg.hatch-egg-lux .lux-egg{width:145px;height:182px;filter:drop-shadow(0 20px 24px rgba(0,0,0,.46)) drop-shadow(0 0 26px color-mix(in srgb,var(--eggGem) 34%,transparent))}
+.hatch-egg.hatch-egg-lux .lux-egg-crown{width:62px;height:39px}.hatch-egg.hatch-egg-lux .lux-egg-gem{width:43px;height:52px}.hatch-egg.hatch-egg-lux .lux-egg-wing{width:32px;height:55px}.hatch-egg.hatch-egg-lux .lux-egg-star{width:11px;height:11px}
+.hatch.v41-charge .hatch-egg.hatch-egg-lux{animation:v46HatchCharge .72s cubic-bezier(.42,0,.25,1) infinite!important}
+.hatch.v41-charge.crack1 .hatch-egg.hatch-egg-lux{animation:v41StageShake1 .14s linear infinite!important}
+.hatch.v41-charge.crack2 .hatch-egg.hatch-egg-lux{animation:v41StageShake2 .07s linear infinite!important}
+@keyframes v46EggFloat{0%,100%{transform:translateY(2px) rotate(-1deg) scale(1.05)}50%{transform:translateY(-7px) rotate(2deg) scale(1.08)}}
+@keyframes v46HatchCharge{0%,100%{transform:translateY(0) scale(.97) rotate(-1.4deg)}50%{transform:translateY(-8px) scale(1.05) rotate(1.4deg)}}
+@keyframes v46EggSpark{0%,100%{opacity:.28;transform:scale(.7) rotate(0)}50%{opacity:1;transform:scale(1.35) rotate(90deg)}}
+@media(max-width:560px){.egg-icon.v46-egg-icon{width:78px;height:92px}.egg-icon.v46-egg-icon .lux-egg{transform:scale(.9)}.hatch-egg.hatch-egg-lux{width:180px;height:205px}.hatch-egg.hatch-egg-lux .lux-egg{width:126px;height:158px}}
+@media(prefers-reduced-motion:reduce){.lux-egg-star,.egg-icon.v46-egg-icon .lux-egg,.hatch-egg.hatch-egg-lux{animation:none!important}}
