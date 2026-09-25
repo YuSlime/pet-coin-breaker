@@ -384,6 +384,12 @@ jobs:
           python3 patches/validate_v49.py public/index.html
           node --check patches/v49.js
 
+      - name: Apply Version 50 normal pet alignment fix
+        run: python3 patches/apply_v50.py
+
+      - name: Validate Version 50 normal pet alignment fix
+        run: python3 patches/validate_v50.py public/index.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
