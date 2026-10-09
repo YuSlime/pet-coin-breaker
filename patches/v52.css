@@ -1,0 +1,28 @@
+/* Version 52: pet SELL tab */
+.tabs.v52-five-tabs{grid-template-columns:repeat(5,minmax(0,1fr))!important}
+.tab[data-tab="sell"]{white-space:nowrap}
+#sell .v52-sell-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+#sell .v52-sell-summary{min-width:0}
+#sell .v52-sell-summary b{font-size:17px}
+#sell .v52-sell-actions{display:flex;gap:7px;flex-wrap:wrap}
+#sell .v52-sell-note{margin:8px 0 12px;padding:9px 10px;border-radius:12px;background:rgba(255,193,89,.07);border:1px solid rgba(255,207,111,.14);font-size:11px;color:#b9c7db;line-height:1.5}
+#sell .v52-sell-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:9px}
+#sell .v52-sell-card{position:relative;min-height:172px;padding:10px;border-radius:17px;border:1px solid rgba(255,255,255,.09);background:linear-gradient(180deg,rgba(19,35,62,.98),rgba(8,16,30,.99));cursor:pointer;overflow:hidden;transition:.13s transform,.13s border-color,.13s box-shadow;user-select:none}
+#sell .v52-sell-card:hover{transform:translateY(-2px)}
+#sell .v52-sell-card.selected{border-color:#ffcf67;box-shadow:0 0 0 2px rgba(255,207,103,.18),0 0 22px rgba(255,190,75,.12)}
+#sell .v52-sell-card.blocked{opacity:.48;cursor:not-allowed;filter:saturate(.72)}
+#sell .v52-sell-card.special{background:radial-gradient(circle at 50% 20%,rgba(255,209,91,.18),transparent 48%),linear-gradient(180deg,rgba(28,32,56,.99),rgba(10,13,25,.99))}
+#sell .v52-sell-check{position:absolute;left:8px;top:8px;z-index:5;min-width:25px;height:25px;padding:0 5px;border-radius:999px;display:grid;place-items:center;background:#0b1526;border:1px solid rgba(255,255,255,.2);font-size:12px;font-weight:1000;color:#fff}
+#sell .v52-sell-card.selected .v52-sell-check{background:#d79a27;color:#201300;border-color:#ffe29b}
+#sell .v52-sell-tier{position:absolute;right:8px;top:8px;z-index:5;padding:4px 7px;border-radius:999px;font-size:9px;font-weight:1000;letter-spacing:.05em;background:rgba(8,16,30,.8);border:1px solid rgba(255,255,255,.1)}
+#sell .v52-sell-visual{height:88px;display:grid;place-items:center;overflow:hidden;margin:2px 0 5px}
+#sell .v52-sell-visual .pet-model{transform:scale(.82)!important;transform-origin:center!important}
+#sell .v52-sell-name{font-size:11px;font-weight:1000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#f4f8ff}
+#sell .v52-sell-meta{display:flex;justify-content:space-between;gap:6px;align-items:center;margin-top:6px;font-size:10px;color:#aebed4}
+#sell .v52-sell-price{font-weight:1000;color:#ffe08b}
+#sell .v52-sell-status{font-size:9px;color:#91a4bf;margin-top:4px}
+#sell .v52-sell-footer{position:sticky;bottom:8px;z-index:12;margin-top:12px;padding:10px;border-radius:15px;background:rgba(7,13,25,.93);border:1px solid rgba(255,215,122,.2);box-shadow:0 12px 30px rgba(0,0,0,.35);backdrop-filter:blur(10px)}
+#sell .v52-sell-footer-row{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap}
+#sell .v52-sell-total{font-size:12px;color:#b8c7dc}#sell .v52-sell-total b{font-size:18px;color:#ffe08b}
+#sell .v52-sell-footer .btn{min-width:150px}
+@media(max-width:560px){.tabs.v52-five-tabs{grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:4px!important}.tabs.v52-five-tabs .tab{font-size:10px!important;padding:9px 3px!important}.v52-sell-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.v52-sell-card{min-height:158px!important}.v52-sell-visual{height:78px!important}.v52-sell-visual .pet-model{transform:scale(.7)!important}}
