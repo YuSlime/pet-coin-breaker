@@ -1,0 +1,24 @@
+/* Version 51: HUGE royal arrival. Effects are visual-only. */
+#hatch.v51-huge-active{--v51gold:#ffe78a;--v51rose:#ff8cdb}
+#hatch .v51-huge-stage{position:absolute;inset:0;pointer-events:none;z-index:16;overflow:hidden;opacity:0;transition:opacity .2s}
+#hatch.v51-huge-active .v51-huge-stage{opacity:1}
+#hatch .v51-huge-veil{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,transparent 12%,#160923b8 74%);animation:v51veil 3.4s both}
+#hatch .v51-huge-ring{position:absolute;left:50%;top:47%;width:min(74vw,340px);aspect-ratio:1;border:3px solid #ffe78a88;border-radius:50%;box-shadow:0 0 24px #ffe78a77,inset 0 0 22px #ff8cdb55;transform:translate(-50%,-50%) rotate(var(--angle)) scale(.2);animation:v51ring 2.4s ease-out both;animation-delay:var(--delay)}
+#hatch .v51-huge-ring:after{content:'✦ ✧ ✦ ✧ ✦ ✧ ✦ ✧';position:absolute;inset:9%;display:grid;place-items:center;color:#fff3b7;font-size:18px;letter-spacing:8px;border:1px dashed #ffb9e8aa;border-radius:50%}
+#hatch .v51-huge-star{position:absolute;left:50%;top:46%;color:#fff5c4;text-shadow:0 0 15px #ffe784;font-size:var(--sz);transform:translate(-50%,-50%) rotate(var(--angle));animation:v51star 1.4s ease-out both;animation-delay:var(--delay)}
+#hatch .v51-huge-crown{position:absolute;left:50%;top:12%;transform:translateX(-50%) scale(.3);font-size:clamp(42px,11vw,86px);filter:drop-shadow(0 0 18px #ffd568);animation:v51crown 2.1s ease-out both}
+#hatch .v51-huge-title{position:absolute;top:22%;left:0;right:0;text-align:center;font-size:clamp(44px,12vw,96px);font-weight:1000;letter-spacing:.12em;color:#fff5b9;-webkit-text-stroke:2px #8c471e;text-shadow:0 4px #7b2a53,0 0 30px #ffd16d,0 0 65px #ff7ccf;opacity:0;animation:v51title 2.1s 1.45s both}
+#hatch .v51-huge-wave{position:absolute;left:50%;top:50%;width:140px;aspect-ratio:1;border:6px solid #fff0a0;border-radius:50%;transform:translate(-50%,-50%) scale(.1);opacity:0;box-shadow:0 0 20px #ffe16d;animation:v51wave 1.1s ease-out both;animation-delay:var(--delay)}
+#hatch .v51-huge-showcase{position:absolute;inset:28% 7% 9%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;opacity:0;animation:v51show 2.3s 2.1s both}
+#hatch .v51-huge-showcase .pet-model{flex:none;transform:scale(1.7);filter:drop-shadow(0 0 18px #ffeaa5);margin:35px 0}
+#hatch .v51-huge-name{font-size:clamp(19px,5vw,30px);font-weight:900;color:#fff7c5;text-shadow:0 0 18px #ffb3e3;text-align:center}
+#hatch.v51-huge-active .v51-huge-stage{animation:v51end 5s both}
+@keyframes v51veil{0%{opacity:0}20%,80%{opacity:1}100%{opacity:.2}}
+@keyframes v51ring{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--angle)) scale(.2)}25%{opacity:1}85%{opacity:.9}100%{opacity:0;transform:translate(-50%,-50%) rotate(calc(var(--angle) + 100deg)) scale(1.6)}}
+@keyframes v51star{0%{opacity:0;transform:translate(-50%,-50%) rotate(var(--angle)) scale(.1)}25%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) rotate(var(--angle)) scale(1.4)}}
+@keyframes v51wave{0%,20%{opacity:0;transform:translate(-50%,-50%) scale(.1)}35%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(5)}}
+@keyframes v51title{0%{opacity:0;transform:scale(3)}18%{opacity:1;transform:scale(.85)}30%{transform:scale(1.1)}50%,85%{opacity:1;transform:scale(1)}100%{opacity:0}}
+@keyframes v51crown{0%{opacity:0;transform:translateX(-50%) translateY(-70px) scale(.3)}40%,80%{opacity:1;transform:translateX(-50%) scale(1)}100%{opacity:0;transform:translateX(-50%) scale(1.2)}}
+@keyframes v51show{0%{opacity:0;transform:translateY(80px) scale(1.6)}18%,80%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0}}
+@keyframes v51end{0%,88%{opacity:1}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){#hatch .v51-huge-stage{animation:none!important}#hatch .v51-huge-ring,#hatch .v51-huge-star,#hatch .v51-huge-wave{display:none}#hatch .v51-huge-title,#hatch .v51-huge-showcase{animation:none;opacity:1}}
