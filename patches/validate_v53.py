@@ -3,15 +3,15 @@ import sys
 h=Path(sys.argv[1] if len(sys.argv)>1 else 'public/index.html').read_text(encoding='utf-8')
 required=[
  'Version 52: pet selling; no serial/# numbering',
+ 'Version 54: sell action is rendered beside the top selection controls',
  'function renderSell()',
  "tab.dataset.tab='sell'",
  "section.id='sell'",
+ 'v54-sell-action',
+ '<button class="btn primary v54-sell-action" onclick="v52SellSelected()"',
+ '<button class="btn" onclick="v52ClearSellSelection()">選択解除</button></div></div>',
  'Version 53: move selected-pet sell action beside clear selection',
- 'v53PlaceSellControls',
- 'button[onclick="v52SellSelected()"]',
- 'button[onclick="v52ClearSellSelection()"]',
- 'v52-sell-actions',
- 'v52-sell-footer-row'
+ 'v53PlaceSellControls'
 ]
 missing=[x for x in required if x not in h]
 if missing:
@@ -21,4 +21,4 @@ if h.index('Version 52: pet selling; no serial/# numbering') > h.index('Version 
 for forbidden in ['serialNo','petSerial','mintNumber','HUGE #','TITANIC #']:
     if forbidden in h:
         raise SystemExit('serial numbering must stay removed: '+forbidden)
-print('Version 54 sell screen + button placement validation: PASS')
+print('Version 54 direct sell-button placement validation: PASS')
