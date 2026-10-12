@@ -1,4 +1,5 @@
 from pathlib import Path
+import runpy
 import sys
 
 h=Path(sys.argv[1] if len(sys.argv)>1 else 'public/index.html').read_text(encoding='utf-8')
@@ -23,3 +24,4 @@ if missing:
     raise SystemExit('Version 55 compatibility validation failed; missing: '+', '.join(missing))
 
 print('Version 55 equip-slot upgrade removal validation: PASS')
+runpy.run_path('patches/validate_v56.py',run_name='__main__')
