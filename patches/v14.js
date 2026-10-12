@@ -1,6 +1,8 @@
 /* Version 14: code 6677 grants 100M coins once per save */
+/* Version 56: code brainrot114514mazide clears the owned-pet inventory after confirmation */
 (function(){
   const CODE='6677';
+  const PET_CLEAR_CODE='brainrot114514mazide';
   const REWARD=100000000;
   const FLAG='redeemedCode6677';
 
@@ -14,6 +16,22 @@
   function redeem(){
     const input=document.querySelector('#redeemCodeInput');
     const value=(input?.value||'').trim();
+
+    if(value===PET_CLEAR_CODE){
+      if(!confirm('所持ペットをすべて削除します。Huge / Titanic / 装備中も含めて元に戻せません。実行しますか？')){
+        setStatus('全ペット削除をキャンセルしました',false);
+        return;
+      }
+      const removed=Array.isArray(state.pets)?state.pets.length:0;
+      state.pets=[];
+      state.equipped=[];
+      persist();
+      renderAll();
+      setStatus('所持ペットを '+removed+'匹すべて削除しました',true);
+      try{toast('🗑️ 所持ペットをすべて削除しました')}catch(e){}
+      if(input)input.value='';
+      return;
+    }
 
     if(value!==CODE){
       setStatus('コードが違います',false);
