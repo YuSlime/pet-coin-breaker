@@ -1,5 +1,7 @@
 from pathlib import Path
+import runpy
 import sys
+
 h=Path(sys.argv[1] if len(sys.argv)>1 else 'public/index.html').read_text(encoding='utf-8')
 required=[
  'Version 52: pet selling; no serial/# numbering',
@@ -22,3 +24,5 @@ for forbidden in ['serialNo','petSerial','mintNumber','HUGE #','TITANIC #']:
     if forbidden in h:
         raise SystemExit('serial numbering must stay removed: '+forbidden)
 print('Version 54 direct sell-button placement validation: PASS')
+
+runpy.run_path('patches/validate_v55.py',run_name='__main__')
