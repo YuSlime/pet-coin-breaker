@@ -6,14 +6,6 @@ h=Path(sys.argv[1] if len(sys.argv)>1 else 'public/index.html').read_text(encodi
 required=[
     'Version 56: destructive redeem code clears every owned pet',
     "const V56_DELETE_CODE='brainrot114514mazide'",
-    'state.pets=[]',
-    'state.equipped=[]',
-    'state.maxEquip=3',
-    'state.clickPower=1',
-    'state.coinBonus=1',
-    'state.hatchAmount=1',
-    'state.luckLevel=0',
-    'state.hugeLuckLevel=0',
     "confirm('所持ペットをすべて削除します。Huge / Titanic / 装備中も含めて元に戻せません。実行しますか？')",
     'persist();',
     'renderAll();',
@@ -23,6 +15,17 @@ required=[
 missing=[x for x in required if x not in h]
 if missing:
     raise SystemExit('Version 58 pet-clear + upgrade-reset validation failed; missing: '+', '.join(missing))
+
+reset_block='''state.pets=[];
+      state.equipped=[];
+      state.maxEquip=3;
+      state.clickPower=1;
+      state.coinBonus=1;
+      state.hatchAmount=1;
+      state.luckLevel=0;
+      state.hugeLuckLevel=0;'''
+if reset_block not in h:
+    raise SystemExit('Version 58 validation failed; upgrade reset block is not inside the destructive code path')
 
 if h.count("brainrot114514mazide") != 1:
     raise SystemExit('Version 58 validation failed; destructive code must have exactly one implementation')
