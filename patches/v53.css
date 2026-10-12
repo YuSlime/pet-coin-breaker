@@ -1,0 +1,5 @@
+/* Version 53: sell button in top selection actions, clear in footer */
+#sell .v52-sell-actions .v53-sell-top-button{background:linear-gradient(135deg,#f7c15c,#ef9a3b);color:#201406;font-weight:900;border:1px solid #ffdf91;min-width:0}
+#sell .v52-sell-actions .v53-sell-top-button:disabled{opacity:.45;cursor:not-allowed}
+#sell .v52-sell-footer-row .v53-clear-bottom-button{min-width:0}
+@media(max-width:560px){#sell .v52-sell-actions{width:100%}#sell .v52-sell-actions .btn{flex:1;min-width:0;font-size:11px}}
