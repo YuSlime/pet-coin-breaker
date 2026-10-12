@@ -20,3 +20,6 @@ Path('public/pages-version.json').write_text('{"version":54,"patch":"sell-screen
 # Version 55 removes only the normal equip-slot purchase upgrade while
 # preserving saved maxEquip values and the rest of the pet equip system.
 runpy.run_path('patches/apply_v55.py',run_name='__main__')
+
+# Version 58 resets upgrade values after the pet-clear redeem succeeds.
+runpy.run_path('patches/apply_v58.py',run_name='__main__')
