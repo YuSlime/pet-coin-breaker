@@ -398,6 +398,14 @@ jobs:
           python3 patches/validate_v51.py
           node --check patches/v51.js
 
+      - name: Apply Version 53 sell button placement
+        run: python3 patches/apply_v53.py
+
+      - name: Validate Version 53 sell button placement
+        run: |
+          python3 patches/validate_v53.py public/index.html
+          node --check patches/v53.js
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
