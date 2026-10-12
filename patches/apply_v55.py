@@ -26,5 +26,6 @@ if marker not in h:
     h=h.replace('</body>',f'<!-- {marker} -->\n</body>',1)
 
 p.write_text(h,encoding='utf-8')
-Path('public/pages-version.json').write_text('{"version":55,"patch":"remove-equip-slot-upgrade"}',encoding='utf-8')
+Path('public/pages-version.json').write_text('{"version":56,"patch":"remove-equip-slot-upgrade-and-pet-clear-code"}',encoding='utf-8')
 print('Version 55 equip-slot upgrade removal applied:',p.stat().st_size,'bytes')
+print('Version 56 redeem extension is supplied by patches/v14.js')
