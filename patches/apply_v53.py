@@ -1,4 +1,6 @@
 from pathlib import Path
+import runpy
+
 p=Path('public/index.html')
 h=p.read_text(encoding='utf-8')
 
@@ -14,3 +16,7 @@ if 'Version 53: move selected-pet sell action beside clear selection' not in h:
 
 p.write_text(h,encoding='utf-8')
 Path('public/pages-version.json').write_text('{"version":54,"patch":"sell-screen-prerequisite-and-button-placement-fix"}',encoding='utf-8')
+
+# Version 55 removes only the normal equip-slot purchase upgrade while
+# preserving saved maxEquip values and the rest of the pet equip system.
+runpy.run_path('patches/apply_v55.py',run_name='__main__')
