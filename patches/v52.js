@@ -1,4 +1,5 @@
 /* Version 52: pet selling; no serial/# numbering */
+/* Version 54: sell action is rendered beside the top selection controls */
 (function(){
   const selected=new Set();
   const DISPLAY_LIMIT=120;
@@ -52,10 +53,10 @@
     ensureUi();prune();const box=document.querySelector('#sell');if(!box)return;
     const list=state.pets.slice().sort((a,b)=>Number(a.power||0)-Number(b.power||0)).slice(0,DISPLAY_LIMIT);
     const picked=chosen(),total=picked.reduce((n,p)=>n+sellValue(p),0),hidden=Math.max(0,state.pets.length-list.length);
-    box.innerHTML='<div class="v52-sell-head"><div class="v52-sell-summary"><b>ペットを売る</b><div class="small">弱い順に最大 '+DISPLAY_LIMIT+'匹を表示'+(hidden?' / 残り '+hidden+'匹':'')+'</div></div><div class="v52-sell-actions"><button class="btn" onclick="v52SelectSellable()">通常ペットを選択</button><button class="btn" onclick="v52ClearSellSelection()">選択解除</button></div></div>'+
+    box.innerHTML='<div class="v52-sell-head"><div class="v52-sell-summary"><b>ペットを売る</b><div class="small">弱い順に最大 '+DISPLAY_LIMIT+'匹を表示'+(hidden?' / 残り '+hidden+'匹':'')+'</div></div><div class="v52-sell-actions"><button class="btn" onclick="v52SelectSellable()">通常ペットを選択</button><button class="btn primary v54-sell-action" onclick="v52SellSelected()" '+(!picked.length?'disabled':'')+'>選択したペットを売る</button></div></div>'+
       '<div class="v52-sell-note">装備中のペットは売却できません。Huge / Titanic は売却時に追加確認が入ります。売却後は元に戻せません。</div>'+
       '<div class="v52-sell-grid">'+list.map(p=>{const blocked=isBlocked(p),sel=selected.has(p.id),special=!!(p.isHuge||p.isTitanic),value=sellValue(p);return '<div class="v52-sell-card '+(sel?'selected ':'')+(blocked?'blocked ':'')+(special?'special':'')+'" onclick="v52ToggleSellPet(\''+p.id+'\')"><span class="v52-sell-check">'+(blocked?'🔒':sel?'✓':'')+'</span><span class="v52-sell-tier">'+tier(p)+'</span><div class="v52-sell-visual">'+petModelHTML(p)+'</div><div class="v52-sell-name">'+p.name+'</div><div class="v52-sell-meta"><span>⚔️ '+fmt(p.power)+'</span><span class="v52-sell-price">🪙 '+fmt(value)+'</span></div><div class="v52-sell-status">'+(blocked?'装備中：売却不可':sel?'売却対象に選択中':'タップで選択')+'</div></div>'}).join('')+'</div>'+
-      '<div class="v52-sell-footer"><div class="v52-sell-footer-row"><div class="v52-sell-total">選択 <b>'+picked.length+'匹</b>　合計 <b>🪙 '+fmt(total)+'</b></div><button class="btn primary" onclick="v52SellSelected()" '+(!picked.length?'disabled':'')+'>選択したペットを売る</button></div></div>';
+      '<div class="v52-sell-footer"><div class="v52-sell-footer-row"><div class="v52-sell-total">選択 <b>'+picked.length+'匹</b>　合計 <b>🪙 '+fmt(total)+'</b></div><button class="btn" onclick="v52ClearSellSelection()">選択解除</button></div></div>';
   }
   window.renderSell=renderSell;
 
