@@ -406,6 +406,12 @@ jobs:
           python3 patches/validate_v53.py public/index.html
           node --check patches/v53.js
 
+      - name: Apply Version 59 polished paw coins
+        run: python3 patches/apply_v59.py
+
+      - name: Validate Version 59 polished paw coins
+        run: python3 patches/validate_v59.py public/index.html
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
